@@ -141,4 +141,13 @@ class RecordController extends Controller
         $record->delete();
         return redirect()->route('records.index')->with('success', 'Record deleted successfully.');
     }
+
+
+    public function details($registration_no)
+    {
+        $record = Record::where('registration_no', $registration_no)->firstOrFail();
+        return view('front.certificate', [
+            'record' => $record
+        ]);
+    }
 }

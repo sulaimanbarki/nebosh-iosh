@@ -18,6 +18,16 @@ use App\Http\Controllers\RecordController;
 |
 */
 
+Route::get('/optimize', function() {
+    // run optimize command
+    \Artisan::call('optimize');
+    // clear cache
+    \Artisan::call('cache:clear');
+
+    return 'DONE'; // return results
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -37,5 +47,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('certificates', CertificatesController::class);
     Route::resource('records', RecordController::class);
 });
+
+Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
 
 require __DIR__.'/auth.php';
