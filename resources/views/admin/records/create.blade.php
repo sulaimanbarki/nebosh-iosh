@@ -63,7 +63,7 @@
                                 
                                 <div class="form-group">
                                     <label for="sqa_reference">SQA Reference No.</label>
-                                    <input type="text" class="form-control" id="sqa_reference" placeholder="Enter SQA reference no." name="sqa_reference">
+                                    <input type="text" value="R980 234" class="form-control" id="sqa_reference" placeholder="Enter SQA reference no." name="sqa_reference">
 
                                     {{-- if error message --}}
                                     @error('sqa_reference')

@@ -7,7 +7,7 @@
 
 <div style="position:relative; top:10px; bottom:10px; left:10px; right:10px">
 
-    <h2 style="text-align:center">THIS IS A VALID CERTIFICATE</h2>
+    {{-- <h2 style="text-align:center">THIS IS A VALID CERTIFICATE</h2> --}}
     <hr />
     <div>
         {{-- <h4>For Detials or Verfications --}}
@@ -51,7 +51,7 @@
                         </dd>
 
                         <dd>
-                            <strong>Date Awarded: </strong> {{ $record->date_awarded }}
+                            <strong>Date Awarded: </strong> {{ date('d/m/Y', strtotime($record->date_awarded)) }}
                         </dd>
 
                         <dd>

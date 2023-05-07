@@ -44,7 +44,9 @@
                                         <td>{{ $record->learner_number }}</td>
                                         <td>{{ $record->certificate->name }}</td>
                                         <td>
-                                            <img src="/images/{{ $record->registration_no }}.png" alt="" width="50">
+                                            <a href="{{ $record->link }}" target="_blank">
+                                                <img src="/images/{{ $record->registration_no }}.png" alt="" width="50">
+                                            </a>
                                         </td>
                                         <td>
                                             <form style="display: inline !important;" action="{{ route('records.destroy', $record->id) }}" method="POST">

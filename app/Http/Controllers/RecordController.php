@@ -53,7 +53,7 @@ class RecordController extends Controller
         $registration_code = strtoupper($registration_code);
 
         // https://neboshazurewebsites.net/Validation/Details/F64051CC87698453D34ACB8
-        $query_string = env('APP_URL') . '/Validation/Details/' . $registration_code;
+        $query_string = 'https://neboshazurrewebsites.net/Validation/Details/' . $registration_code;
 
         \QrCode::format('png')->size(200)->generate($query_string, public_path('images/' . $registration_code . '.png'));
 

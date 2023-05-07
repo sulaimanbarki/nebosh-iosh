@@ -18,7 +18,9 @@
             <div class="col-md-12">
                 <div class="card">
                     {{-- display record qr code --}}
-                    <img src="/images/{{ $record->registration_no }}.png" alt="qr code" class="img-fluid" width="200">
+                    <a href="{{ $record->link }}" target="_blank">
+                        <img src="/images/{{ $record->registration_no }}.png" alt="qr code" class="img-fluid" width="200">
+                    </a>
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <table class="table table-striped">
