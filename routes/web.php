@@ -5,6 +5,7 @@ use App\Http\Controllers\PlansController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CertificatesController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\RecordController;
 
 /*
@@ -23,20 +24,17 @@ Route::get('/optimize', function() {
     \Artisan::call('optimize');
     // clear cache
     \Artisan::call('cache:clear');
+    // config cache
+    \Artisan::call('config:clear');
 
     return 'DONE'; // return results
 });
 
+Route::redirect('/', 'login');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->middleware(['auth', 'verified', 'admin'])->name('dashboard');
-
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

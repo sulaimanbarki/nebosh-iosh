@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Faker\Core\Uuid;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -24,7 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -35,7 +37,22 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required',
+            'password_confirm' => 'required|same:password',
+        ]);
+
+        $user = new User();
+        $user->name = request()->name;
+        $user->email = request()->email;
+        $user->user_code = rand(111111, 999999);
+        $user->user_uuid = fake()->uuid();
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -57,7 +74,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -69,7 +88,20 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => "required|unique:users,email,$id,id",
+            'password' => 'required',
+            'password_confirm' => 'required|same:password',
+        ]);
+
+        $user = User::findorfail($id);
+        $user->name = request()->name;
+        $user->email = request()->email;
+        $user->password = Hash::make($request->password);
+        $user->update();
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -80,6 +112,13 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findorfail($id);
+
+        if ($user->is_admin) {
+            return redirect()->route('users.index');
+        }
+
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }

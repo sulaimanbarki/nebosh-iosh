@@ -19,7 +19,7 @@ class CheckAdmin
         if (!auth()->user()->is_admin) {
             // logout user
             auth()->logout();
-            return redirect()->route('home');
+            return redirect()->route('login');
         }
         return $next($request);
     }

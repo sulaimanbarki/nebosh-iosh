@@ -9,7 +9,7 @@
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
             <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
-            <li class="breadcrumb-item active">Create User</li>
+            <li class="breadcrumb-item active">Edit User</li>
         </ol>
     </div><!-- /.col -->
 </div><!-- /.row -->
@@ -19,18 +19,19 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Create User</h3>
-                        {{-- create user button float right --}}
+                        <h3 class="card-title">Edit User</h3>
+                        {{-- Edit user button float right --}}
                         <a href="{{ route('users.index') }}" class="btn btn-primary btn-sm float-right">Back</a>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body p-0">
-                        <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('users.update', $user->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="{{ old('name') ?? $user->name }}">
 
                                     {{-- if error message --}}
                                     @error('name')
@@ -39,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="{{ old('email') ?? $user->email }}">
 
                                     {{-- if error message --}}
                                     @error('email')
@@ -68,7 +69,7 @@
                             </div>
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
                     </div>

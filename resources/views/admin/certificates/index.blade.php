@@ -3,12 +3,12 @@
 
 <div class="row mb-2">
     <div class="col-sm-6">
-        <h1 class="m-0">Dashboard</h1>
+        <h1 class="m-0">Certificates</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-            <li class="breadcrumb-item active">certificates List</li>
+            <li class="breadcrumb-item active">Certificates List</li>
         </ol>
     </div><!-- /.col -->
 </div><!-- /.row -->
@@ -22,8 +22,8 @@
                         <a href="{{ route('certificates.create') }}" class="btn btn-primary btn-sm float-right">Create Certificate</a>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body p-0">
-                        <table class="table table-striped">
+                    <div class="card-body p-0" style="overflow-x: auto">
+                        <table class="table table-striped" style="overflow-x: auto">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>

@@ -2,7 +2,7 @@
 @section('app')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Records</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -63,7 +63,7 @@
                                 
                                 <div class="form-group">
                                     <label for="sqa_reference">SQA Reference No.</label>
-                                    <input type="text" value="R980 234" class="form-control" id="sqa_reference" placeholder="Enter SQA reference no." name="sqa_reference">
+                                    <input type="text" value="R630 04" class="form-control" id="sqa_reference" placeholder="Enter SQA reference no." name="sqa_reference">
 
                                     {{-- if error message --}}
                                     @error('sqa_reference')

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
+    <title>{{env('APP_NAME')}}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -44,7 +44,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
-                
+
             </ul>
 
             <!-- Right navbar links -->
@@ -62,7 +62,7 @@
                 </li>
 
                 <!-- Messages Dropdown Menu -->
-                
+
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
@@ -75,8 +75,8 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <a href="{{ route('dashboard') }}" class="brand-link">
+                <span class="brand-text font-weight-light">{{ env('APP_NAME') }}</span>
             </a>
 
             <!-- Sidebar -->

@@ -3,7 +3,7 @@
 
 <div class="row mb-2">
     <div class="col-sm-6">
-        <h1 class="m-0">Dashboard</h1>
+        <h1 class="m-0">Users</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -19,6 +19,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Users List</h3>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right">Create User</a>
+
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body p-0">
@@ -39,10 +41,10 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                         <form class="form-inline" action="{{ route('users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
+                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm mr-1">Edit</a>
                                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                         </form>
                                     </td>

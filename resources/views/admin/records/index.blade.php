@@ -3,7 +3,7 @@
 
 <div class="row mb-2">
     <div class="col-sm-6">
-        <h1 class="m-0">Dashboard</h1>
+        <h1 class="m-0">Records</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -22,8 +22,8 @@
                         <a href="{{ route('records.create') }}" class="btn btn-primary btn-sm float-right">Create Record</a>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body p-0">
-                        <table class="table table-striped">
+                    <div class="card-body p-0" style="overflow-x: auto">
+                        <table class="table table-striped" style="overflow-x: auto">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#</th>
