@@ -13,10 +13,18 @@ class RecordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request  $request)
     {
+        // ten items per page
+        if ($request->has('search')) {
+            $records = Record::where('learner_name', 'like', "%{$request->search}%")
+                ->paginate(10);
+        }else {
+            $records = Record::paginate(10);
+        }
+
         return view('admin.records.index', [
-            'records' => Record::paginate(10)
+            'records' => $records
         ]);
     }
 

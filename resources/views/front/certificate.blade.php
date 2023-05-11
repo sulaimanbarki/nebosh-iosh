@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,32 +16,27 @@
         <dl class="dl-horizontal">
 
             <dd>
-                <strong>Learner Name: </strong>Zulqarnain Haider
+                <strong>Learner Name: </strong>{{ $record->learner_name }}
             </dd>
 
             <dd>
-                <strong>Learner Number: </strong>00522690
+                <strong>Learner Number: </strong>{{ $record->learner_number }}
             </dd>
 
                 <dd>
-                    <strong>Qualification Name: </strong>NEBOSH International General Certificate in Occupational Health and Safety
-                </dd>
-
-
-                <dd>
-                    <strong>Qualification Grade: </strong>CREDIT
+                    <strong>Qualification Name: </strong>{{ $record->certificate->name }}
                 </dd>
             
                 <dd>
-                    <strong>SQA Reference: </strong>R630 04
+                    <strong>SQA Reference: </strong>{{ $record->sqa_reference }}
                 </dd>
 
             <dd>
-                <strong>Date Awarded: </strong>14/06/2021
+                <strong>Date Awarded: </strong>{{ date('d/m/Y', strtotime($record->date_awarded)) }}
             </dd>
 
             <dd>
-                <strong>Certificate log Number: </strong>00522690/1225541
+                <strong>Certificate log Number: </strong>{{ $record->certificate_log_number }}
             </dd>
 
         </dl>
