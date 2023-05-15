@@ -95,10 +95,10 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="/admin"
+                        <li class="nav-item">
+                            <a href="/dashboard"
                                 class="nav-link
-                            @if (Request::is('admin')) active @endif
+                            @if (Request::is('dashboard')) active @endif
                             ">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -138,6 +138,17 @@
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Certificates
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/backupdb"
+                                class="nav-link
+                            @if (Request::is('backupdb')) active @endif
+                            ">
+                                <i class="nav-icon fas fa-database"></i>
+                                <p>
+                                    Backup
                                 </p>
                             </a>
                         </li>
