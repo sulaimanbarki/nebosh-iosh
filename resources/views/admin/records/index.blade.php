@@ -49,7 +49,7 @@
                             <tbody>
                                 @foreach ($records as $record)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $record->id }}</td> 
                                         <td>{{ $record->registration_no }}</td>
                                         <td>{{ $record->learner_name }}</td>
                                         <td>{{ $record->learner_number }}</td>
