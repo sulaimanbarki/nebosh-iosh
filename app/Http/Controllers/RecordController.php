@@ -69,6 +69,7 @@ class RecordController extends Controller
             'learner_name' => $request->learner_name,
             'learner_number' => $request->learner_number,
             'certificate_id' => $request->certificate_id,
+            'qualification_grade' => $request->qualification_grade == 'on' ? 'CREDIT' : null,
             'sqa_reference' => $request->sqa_reference,
             'date_awarded' => $request->date_awarded,
             'certificate_log_number' => $request->certificate_log_number,
@@ -129,6 +130,7 @@ class RecordController extends Controller
             'learner_name' => $request->learner_name,
             'learner_number' => $request->learner_number,
             'certificate_id' => $request->certificate_id,
+            'qualification_grade' => $request->qualification_grade == 'on' ? 'CREDIT' : null,
             'sqa_reference' => $request->sqa_reference,
             'date_awarded' => $request->date_awarded,
             'certificate_log_number' => $request->certificate_log_number

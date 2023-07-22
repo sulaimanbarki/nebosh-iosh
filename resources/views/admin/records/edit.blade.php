@@ -31,8 +31,8 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="learner_name">Learner Name</label>
-                                    <input type="text" class="form-control" id="learner_name" placeholder="Enter name" value="{{ old('learner_name') ?? $record->learner_name }}"
-                                        name="learner_name">
+                                    <input type="text" class="form-control" id="learner_name" placeholder="Enter name"
+                                        value="{{ old('learner_name') ?? $record->learner_name }}" name="learner_name">
 
                                     {{-- if error message --}}
                                     @error('learner_name')
@@ -41,7 +41,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="learner_number">Learner No</label>
-                                    <input type="text" class="form-control" id="learner_number" value="{{ old('learner_number') ?? $record->learner_number }}"
+                                    <input type="text" class="form-control" id="learner_number"
+                                        value="{{ old('learner_number') ?? $record->learner_number }}"
                                         placeholder="Enter learner number" name="learner_number">
 
                                     {{-- if error message --}}
@@ -65,9 +66,18 @@
                                     @enderror
                                 </div>
 
+                                
+                                <div class="form-check my-2">
+                                    <input type="checkbox" class="form-check-input" id="qualification_grade"
+                                        name="qualification_grade" @if($record->qualification_grade) checked @endif>
+                                    <label class="form-check-label" for="qualification_grade"><b>Qualification Grade
+                                            (optional)</b></label>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="sqa_reference">SQA Reference No.</label>
-                                    <input type="text" class="form-control" id="sqa_reference" value="{{ old('sqa_reference') ?? $record->sqa_reference }}"
+                                    <input type="text" class="form-control" id="sqa_reference"
+                                        value="{{ old('sqa_reference') ?? $record->sqa_reference }}"
                                         placeholder="Enter SQA reference no." name="sqa_reference">
 
                                     {{-- if error message --}}
@@ -79,7 +89,8 @@
                                 {{-- date_awarded --}}
                                 <div class="form-group">
                                     <label for="date_awarded">Date Awarded</label>
-                                    <input type="date" class="form-control" id="date_awarded" value="{{ old('date_awarded') ?? $record->date_awarded }}"
+                                    <input type="date" class="form-control" id="date_awarded"
+                                        value="{{ old('date_awarded') ?? $record->date_awarded }}"
                                         placeholder="Enter date awarded" name="date_awarded">
 
                                     {{-- if error message --}}
@@ -91,7 +102,8 @@
                                 {{-- certificate_log_number --}}
                                 <div class="form-group">
                                     <label for="certificate_log_number">Certificate Log No.</label>
-                                    <input type="text" class="form-control" id="certificate_log_number" value="{{ old('certificate_log_number') ?? $record->certificate_log_number }}"
+                                    <input type="text" class="form-control" id="certificate_log_number"
+                                        value="{{ old('certificate_log_number') ?? $record->certificate_log_number }}"
                                         placeholder="Enter certificate log number" name="certificate_log_number">
 
                                     {{-- if error message --}}

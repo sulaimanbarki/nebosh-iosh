@@ -29,7 +29,8 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="learner_name">Learner Name</label>
-                                    <input type="text" class="form-control" id="learner_name" placeholder="Enter name" name="learner_name">
+                                    <input type="text" class="form-control" id="learner_name" placeholder="Enter name"
+                                        name="learner_name">
 
                                     {{-- if error message --}}
                                     @error('learner_name')
@@ -38,32 +39,42 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="learner_number">Learner No</label>
-                                    <input type="text" class="form-control" id="learner_number" placeholder="Enter learner number" name="learner_number">
+                                    <input type="text" class="form-control" id="learner_number"
+                                        placeholder="Enter learner number" name="learner_number">
 
                                     {{-- if error message --}}
                                     @error('learner_number')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                
+
                                 <div class="form">
                                     <label for="certificate_id">Certificate</label>
                                     <select name="certificate_id" id="certificate_id" class="form-control">
                                         <option value="">Select Certificate</option>
                                         @foreach ($certificates as $certificate)
-                                        <option value="{{ $certificate->id }}">{{ $certificate->name }}</option>
+                                            <option value="{{ $certificate->id }}">{{ $certificate->name }}</option>
                                         @endforeach
                                     </select>
-                                    
+
                                     {{-- if error message --}}
                                     @error('certificate_id')
-                                    <span class="text-danger">{{ $message }}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                
+
+
+                                <div class="form-check my-2">
+                                    <input type="checkbox" class="form-check-input" id="qualification_grade"
+                                        name="qualification_grade">
+                                    <label class="form-check-label" for="qualification_grade"><b>Qualification Grade
+                                            (optional)</b></label>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="sqa_reference">SQA Reference No.</label>
-                                    <input type="text" value="R630 04" class="form-control" id="sqa_reference" placeholder="Enter SQA reference no." name="sqa_reference">
+                                    <input type="text" value="R630 04" class="form-control" id="sqa_reference"
+                                        placeholder="Enter SQA reference no." name="sqa_reference">
 
                                     {{-- if error message --}}
                                     @error('sqa_reference')
@@ -74,7 +85,8 @@
                                 {{-- date_awarded --}}
                                 <div class="form-group">
                                     <label for="date_awarded">Date Awarded</label>
-                                    <input type="date" class="form-control" id="date_awarded" placeholder="Enter date awarded" name="date_awarded">
+                                    <input type="date" class="form-control" id="date_awarded"
+                                        placeholder="Enter date awarded" name="date_awarded">
 
                                     {{-- if error message --}}
                                     @error('date_awarded')
@@ -85,7 +97,8 @@
                                 {{-- certificate_log_number --}}
                                 <div class="form-group">
                                     <label for="certificate_log_number">Certificate Log No.</label>
-                                    <input type="text" class="form-control" id="certificate_log_number" placeholder="Enter certificate log number" name="certificate_log_number">
+                                    <input type="text" class="form-control" id="certificate_log_number"
+                                        placeholder="Enter certificate log number" name="certificate_log_number">
 
                                     {{-- if error message --}}
                                     @error('certificate_log_number')

@@ -42,6 +42,7 @@
                                     <th>Name</th>
                                     <th>Learner No.</th>
                                     <th>Cert.</th>
+                                    <th>Grade</th>
                                     <th>Qr</th>
                                     <th>Action</th>
                                 </tr>
@@ -54,6 +55,7 @@
                                         <td>{{ $record->learner_name }}</td>
                                         <td>{{ $record->learner_number }}</td>
                                         <td>{{ $record->certificate->name }}</td>
+                                        <td>{{ $record->qualification_grade == 'CREDIT' ? 'CREDIT' : 'N/A' }}</td>
                                         <td>
                                             <a href="{{ route('validation.details', $record->registration_no) }}"
                                                 target="_blank">
