@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('records', function (Blueprint $table) {
-            $table->string('qualification_grade')->default(null);
+            $table->string('qualification_grade')->nullable();
         });
     }
 
