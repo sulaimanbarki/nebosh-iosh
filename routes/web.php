@@ -56,63 +56,51 @@ require __DIR__ . '/auth.php';
 
 
 Route::get('/backupdb', function () {
-    $DbName             = env('DB_DATABASE');
-    $get_all_table_query = "SHOW TABLES ";
-    $result = DB::select(DB::raw($get_all_table_query));
+    try {
+        $tables = DB::select('SHOW TABLES');
 
-    $prep = "Tables_in_$DbName";
-    foreach ($result as $res) {
-        $tables[] =  $res->$prep;
-    }
+        $output = '';
+        foreach ($tables as $table) {
+            $table = get_object_vars($table);
+            $tableName = current($table);
 
+            $showTableQuery = "SHOW CREATE TABLE $tableName";
+            $createTable = DB::select($showTableQuery)[0]->{'Create Table'};
+            $output .= "\n\n" . $createTable . ";\n\n";
 
+            $selectRowsQuery = "SELECT * FROM $tableName";
+            $rows = DB::select($selectRowsQuery);
 
-    $connect = DB::connection()->getPdo();
-
-    $get_all_table_query = "SHOW TABLES";
-    $statement = $connect->prepare($get_all_table_query);
-    $statement->execute();
-    $result = $statement->fetchAll();
-
-
-    $output = '';
-    foreach ($tables as $table) {
-        $show_table_query = "SHOW CREATE TABLE " . $table . "";
-        $statement = $connect->prepare($show_table_query);
-        $statement->execute();
-        $show_table_result = $statement->fetchAll();
-
-        foreach ($show_table_result as $show_table_row) {
-            $output .= "\n\n" . $show_table_row["Create Table"] . ";\n\n";
+            foreach ($rows as $row) {
+                $row = (array)$row;
+                $values = implode("', '", array_map('addslashes', $row));
+                $output .= "INSERT INTO $tableName VALUES ('$values');\n";
+            }
         }
-        $select_query = "SELECT * FROM " . $table . "";
-        $statement = $connect->prepare($select_query);
-        $statement->execute();
-        $total_row = $statement->rowCount();
 
-        for ($count = 0; $count < $total_row; $count++) {
-            $single_result = $statement->fetch(\PDO::FETCH_ASSOC);
-            $table_column_array = array_keys($single_result);
-            $table_value_array = array_values($single_result);
-            $output .= "\nINSERT INTO $table (";
-            $output .= "" . implode(", ", $table_column_array) . ") VALUES (";
-            $output .= "'" . implode("','", $table_value_array) . "');\n";
-        }
+        // Set file name and path
+        $fileName = 'database_backup_' . date('Y-m-d_H-i-s') . '.sql';
+        $filePath = storage_path('app/' . $fileName);
+
+        // Write output to the backup file
+        file_put_contents($filePath, $output);
+
+        // Set headers for file download
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . $fileName . '"');
+        header('Content-Length: ' . filesize($filePath));
+        header('Pragma: no-cache');
+        header('Cache-Control: must-revalidate');
+        header('Expires: 0');
+        readfile($filePath);
+
+        // Delete the backup file after download
+        unlink($filePath);
+
+        exit;
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
     }
-    $file_name = 'database_backup_on_' . date('y-m-d') . '.sql';
-    $file_handle = fopen($file_name, 'w+');
-    fwrite($file_handle, $output);
-    fclose($file_handle);
-    header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename=' . basename($file_name));
-    header('Content-Transfer-Encoding: binary');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate');
-    header('Pragma: public');
-    header('Content-Length: ' . filesize($file_name));
-    ob_clean();
-    flush();
-    readfile($file_name);
-    unlink($file_name);
 });
+
