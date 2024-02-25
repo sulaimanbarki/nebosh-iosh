@@ -58,6 +58,14 @@
                                         <a href="{{ route('records.edit', $record->id) }}" class="btn btn-primary btn-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
+                                        <a href="{{ route('change.status', $record->id)}}" class="btn {{ $record->status == 'active' ? 'btn-success' : 'btn-danger' }} btn-sm">
+                                            @if ($record->status == 'active')
+                                                <i class="fas fa-check"></i>
+                                            @else
+                                                <b>X</b>
+                                            @endif
+                                            {{ $record->status }}
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>

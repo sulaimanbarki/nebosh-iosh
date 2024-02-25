@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     // characters  
     Route::resource('certificates', CertificatesController::class);
     Route::resource('records', RecordController::class);
+    Route::get('change-status/{id}', [RecordController::class, 'changeStatus'])->name('change.status');
 });
 
 Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
