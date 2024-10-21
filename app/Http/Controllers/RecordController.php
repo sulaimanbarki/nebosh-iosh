@@ -155,7 +155,7 @@ class RecordController extends Controller
 
     public function details($registration_no)
     {
-        $record = Record::where('registration_no', $registration_no)->where('status', 'active')->firstOrFail();
+        $record = Record::where('registration_no', $registration_no)->firstOrFail();
         return view('front.certificate', [
             'record' => $record
         ]);
@@ -166,7 +166,7 @@ class RecordController extends Controller
         $record = Record::findOrFail($id);
         $record->status = $record->status == 'active' ? 'inactive' : 'active';
         $record->save();
-        
+
         return redirect()->back()->with('success', 'Status changed successfully.');
     }
 }
