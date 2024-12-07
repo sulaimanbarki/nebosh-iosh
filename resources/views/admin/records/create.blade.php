@@ -48,6 +48,19 @@
                                     @enderror
                                 </div>
 
+
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" value="{{ old('email') }}"
+                                        placeholder="Enter learner number" name="email">
+
+                                    {{-- if error message --}}
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+
                                 <div class="form">
                                     <label for="certificate_id">Certificate</label>
                                     <select name="certificate_id" id="certificate_id" class="form-control">

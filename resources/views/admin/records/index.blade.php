@@ -41,6 +41,7 @@
                                     <th>Registration No.</th>
                                     <th>Name</th>
                                     <th>Learner No.</th>
+                                    <th>Email</th>
                                     <th>Cert.</th>
                                     <th>Grade</th>
                                     <th>Qr</th>
@@ -50,10 +51,11 @@
                             <tbody>
                                 @foreach ($records as $record)
                                     <tr>
-                                        <td>{{ $record->id }}</td> 
+                                        <td>{{ $record->id }}</td>
                                         <td>{{ $record->registration_no }}</td>
                                         <td>{{ $record->learner_name }}</td>
                                         <td>{{ $record->learner_number }}</td>
+                                        <td>{{ $record->email ?? 'N/A' }}</td>
                                         <td>{{ $record->certificate->name }}</td>
                                         <td>{{ $record->qualification_grade == 'CREDIT' ? 'CREDIT' : 'N/A' }}</td>
                                         <td>

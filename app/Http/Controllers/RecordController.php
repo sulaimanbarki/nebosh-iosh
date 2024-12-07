@@ -19,7 +19,7 @@ class RecordController extends Controller
         if ($request->has('search')) {
             $records = Record::where('learner_name', 'like', "%{$request->search}%")
                 ->paginate(10);
-        }else {
+        } else {
             $records = Record::paginate(10);
         }
 
@@ -54,7 +54,8 @@ class RecordController extends Controller
             'certificate_id' => 'required',
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
-            'certificate_log_number' => 'required'
+            'certificate_log_number' => 'required',
+            'email' => 'required|email'
         ]);
 
         $registration_code = bin2hex(random_bytes(12));
@@ -74,7 +75,8 @@ class RecordController extends Controller
             'date_awarded' => $request->date_awarded,
             'certificate_log_number' => $request->certificate_log_number,
             'link' => $query_string,
-            'registration_no' => $registration_code
+            'registration_no' => $registration_code,
+            'email' => $request->email
         ]);
 
         return redirect()->route('records.index')->with('success', 'Record created successfully.');
@@ -123,7 +125,8 @@ class RecordController extends Controller
             'certificate_id' => 'required',
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
-            'certificate_log_number' => 'required'
+            'certificate_log_number' => 'required',
+            'email' => 'required|email'
         ]);
 
         $record->update([
@@ -133,7 +136,8 @@ class RecordController extends Controller
             'qualification_grade' => $request->qualification_grade == 'on' ? 'CREDIT' : null,
             'sqa_reference' => $request->sqa_reference,
             'date_awarded' => $request->date_awarded,
-            'certificate_log_number' => $request->certificate_log_number
+            'certificate_log_number' => $request->certificate_log_number,
+            'email' => $request->email
         ]);
 
         return redirect()->route('records.index')->with('success', 'Record updated successfully.');
@@ -155,6 +159,7 @@ class RecordController extends Controller
 
     public function details($registration_no)
     {
+
         $record = Record::where('registration_no', $registration_no)->firstOrFail();
         return view('front.certificate', [
             'record' => $record
