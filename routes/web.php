@@ -46,16 +46,28 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('users', UsersController::class);
     Route::resource('plans', PlansController::class);
-    // characters  
+    // characters
     Route::resource('certificates', CertificatesController::class);
     Route::resource('records', RecordController::class);
     Route::get('change-status/{id}', [RecordController::class, 'changeStatus'])->name('change.status');
 });
 
 // Route::get('/first-step/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
-Route::get('Validation/Details/{registration_id}', [RecordController::class, 'verification'])->name('validation.verification.step1');
+Route::get('/validation/details/{registration_id}', [RecordController::class, 'verification'])->name('validation.verification.step1');
 Route::get('/ConfirmRequest/{id}', [RecordController::class, 'ConfirmRequest'])->name('validation.verification.step2');
-
+Route::get('/Validation/CheckCertExists', [RecordController::class, 'checkCertExists'])->name('validation.verification.checkCertExists');
+// Route::get('/Validation/CheckCertExists', function () {
+//     return response()->json([
+//         'failedCaptcha' => false,
+//         'exists' => true,
+//         'void' => false,
+//         'certificateKey' => '1PSC1JGI1TK85RB4E70VIAAG',
+//         'errorMessage' => null,
+//         'learnerName' => 'Nadeem Akram',
+//         'certMasterLog' => '00685517/1305342',
+//         'certDate' => '2022-08-09'
+//     ], 200);
+// });
 // http://127.0.0.1:8000/Validation/StoreCaptcha return 200
 // {
 //     "success": true,
@@ -90,18 +102,7 @@ Route::get('/Validation/StoreCaptcha', function (Request $request) {
 //     "certMasterLog": "00685517/1305342",
 //     "certDate": "2022-08-09"
 // }
-Route::get('/Validation/CheckCertExists', function () {
-    return response()->json([
-        'failedCaptcha' => false,
-        'exists' => true,
-        'void' => false,
-        'certificateKey' => '1PSC1JGI1TK85RB4E70VIAAG',
-        'errorMessage' => null,
-        'learnerName' => 'Nadeem Akram',
-        'certMasterLog' => '00685517/1305342',
-        'certDate' => '2022-08-09'
-    ], 200);
-});
+
 
 // Validation/ValidateCaptcha
 // {"success":true,"expires":"2024-12-04T22:24:28.4323629+00:00"}

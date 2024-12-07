@@ -19,7 +19,7 @@ class RecordController extends Controller
         if ($request->has('search')) {
             $records = Record::where('learner_name', 'like', "%{$request->search}%")
                 ->paginate(10);
-        }else {
+        } else {
             $records = Record::paginate(10);
         }
 
@@ -60,8 +60,8 @@ class RecordController extends Controller
         $registration_code = bin2hex(random_bytes(12));
         $registration_code = strtoupper($registration_code);
 
-        // https://neboshazurewebsites.net/Validation/Details/F64051CC87698453D34ACB8
-        $query_string = env('APP_URL') . '/Validation/Details/' . $registration_code;
+        // https://neboshazurewebsites.net/validation/details/F64051CC87698453D34ACB8
+        $query_string = env('APP_URL') . '/validation/details/' . $registration_code;
 
         \QrCode::format('png')->size(200)->generate($query_string, public_path('images/' . $registration_code . '.png'));
 
@@ -167,7 +167,7 @@ class RecordController extends Controller
     public function verification($registration_no)
     {
         $record = Record::where('registration_no', $registration_no)->firstOrFail();
-        
+
         return view('front.verification-step1', [
             'record' => $record
         ]);
@@ -189,5 +189,26 @@ class RecordController extends Controller
         $record->save();
 
         return redirect()->back()->with('success', 'Status changed successfully.');
+    }
+
+    public function checkCertExists(Request $request)
+    {
+
+        dd($request->all());
+        $registration_no = request('registration_no');
+        $record = Record::where('registration_no', $registration_no)->first();
+
+        if ($record) {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Record found',
+                'record' => $record
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Record not found'
+            ]);
+        }
     }
 }

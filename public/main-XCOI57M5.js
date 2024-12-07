@@ -24238,6 +24238,8 @@ var An = (() => {
             console.log('checking', e)
             return this.httpClient.get(`${this.apiHelper.BaseUrl}Validation/CheckCertExists`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
         }
+
+
         requestValidation(e) {
             return this.httpClient.post(`${this.apiHelper.BaseUrl}Validation/RequestValidation`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
         }
