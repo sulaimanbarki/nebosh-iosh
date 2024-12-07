@@ -9,6 +9,7 @@ use Spatie\Backup\Tasks\Backup\BackupJob;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CertificatesController;
+use Illuminate\Http\Request;
 use Spatie\Backup\BackupDestination\BackupDestinationFactory;
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,71 @@ Route::middleware(['auth'])->group(function () {
     Route::get('change-status/{id}', [RecordController::class, 'changeStatus'])->name('change.status');
 });
 
-Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
+// Route::get('/first-step/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
+Route::get('Validation/Details/{registration_id}', [RecordController::class, 'verification'])->name('validation.verification.step1');
+Route::get('/ConfirmRequest/{id}', [RecordController::class, 'ConfirmRequest'])->name('validation.verification.step2');
+
+// http://127.0.0.1:8000/Validation/StoreCaptcha return 200
+// {
+//     "success": true,
+//     "token": "zRgR86So0SNRlOUvp5plbA==|xISIkiom32dJRiB93ni8NlFVs6Q5DvETNBxXoMWVUSpmRYgaAO03ECtzBwbTJxQ+VEWxBHRo8FcOUyyrbea6MIpGMmgWnmhCyA97hYcq0tw=",
+//     "expires": null
+// }
+
+// {"success":true,"expires":"2024-12-07T05:54:13.7774237+00:00"}
+
+// {
+//     "success": true,
+//     "token": "Njkxptz/g9I8eO+4NZ7+cA==|JCoOzhcRrUa1apAFd6M8Mmu3JrgcvpnI21vB7bkgzHV5EJd93N7bar0oZpxM+1be4peNNuZQ1mxq//LKAFMDLWdV7IAqIQTlwfsAopA8xAI=",
+//     "expires": null
+// }
+Route::get('/Validation/StoreCaptcha', function (Request $request) {
+    // dd($request->all());
+    return response()->json([
+        'success' => true,
+        'token' => 'Njkxptz/g9I8eO+4NZ7+cA==|JCoOzhcRrUa1apAFd6M8Mmu3JrgcvpnI21vB7bkgzHV5EJd93N7bar0oZpxM+1be4peNNuZQ1mxq//LKAFMDLWdV7IAqIQTlwfsAopA8xAI=',
+        'expires' => null
+    ], 200);
+});
+
+// http://127.0.0.1:8000/Validation/CheckCertExists
+// {
+//     "failedCaptcha": false,
+//     "exists": true,
+//     "void": false,
+//     "certificateKey": "1PSC1JGI1TK85RB4E70VIAAG",
+//     "errorMessage": null,
+//     "learnerName": "Nadeem Akram",
+//     "certMasterLog": "00685517/1305342",
+//     "certDate": "2022-08-09"
+// }
+Route::get('/Validation/CheckCertExists', function () {
+    return response()->json([
+        'failedCaptcha' => false,
+        'exists' => true,
+        'void' => false,
+        'certificateKey' => '1PSC1JGI1TK85RB4E70VIAAG',
+        'errorMessage' => null,
+        'learnerName' => 'Nadeem Akram',
+        'certMasterLog' => '00685517/1305342',
+        'certDate' => '2022-08-09'
+    ], 200);
+});
+
+// Validation/ValidateCaptcha
+// {"success":true,"expires":"2024-12-04T22:24:28.4323629+00:00"}
+Route::get('/Validation/ValidateCaptcha', function () {
+    return response()->json([
+        'success' => false,
+        // 'expires' => '2024-12-04T22:24:28.4323629+00:00'
+        // two days from now
+        'expires' => null
+    ], 200);
+});
+
+Route::get('/test-captcha', function () {
+    return view('admin.users.test');
+});
 
 require __DIR__ . '/auth.php';
 

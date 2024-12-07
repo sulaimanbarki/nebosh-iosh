@@ -156,7 +156,28 @@ class RecordController extends Controller
     public function details($registration_no)
     {
         $record = Record::where('registration_no', $registration_no)->firstOrFail();
+
+        return redirect()->route('validation.verification.step1', $registration_no);
+
         return view('front.certificate', [
+            'record' => $record
+        ]);
+    }
+
+    public function verification($registration_no)
+    {
+        $record = Record::where('registration_no', $registration_no)->firstOrFail();
+        
+        return view('front.verification-step1', [
+            'record' => $record
+        ]);
+    }
+
+    public function ConfirmRequest($registration_no)
+    {
+        $record = 'recor';
+
+        return view('front.verification-step2', [
             'record' => $record
         ]);
     }
