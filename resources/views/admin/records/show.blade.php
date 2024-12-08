@@ -46,6 +46,12 @@
                                     <th>Email</th>
                                     <td>{{ $record->email }}</td>
                                 </tr>
+
+                                <tr>
+                                    <th>Date of Birth</th>
+                                    <td>{{ $record->date_of_birth }}</td>
+                                </tr>
+
                                 <tr>
                                     <th>Cert.</th>
                                     <td>{{ $record->certificate->name }}</td>

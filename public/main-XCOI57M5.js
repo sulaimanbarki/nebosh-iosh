@@ -24236,18 +24236,26 @@ var An = (() => {
         }
         checkCertExists(e) {
             console.log('checking', e)
-            return this.httpClient.get(`${this.apiHelper.BaseUrl}Validation/CheckCertExists`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
+            // return this.httpClient.get(`${this.apiHelper.BaseUrl}Validation/CheckCertExists`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
+            // pass the data in the e object to the Validation/CheckCertExists as query params
+            return this.httpClient.get(`${this.apiHelper.BaseUrl}Validation/CheckCertExists`, { params: e }).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
         }
 
 
         requestValidation(e) {
-            return this.httpClient.post(`${this.apiHelper.BaseUrl}Validation/RequestValidation`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
+            // return this.httpClient.post(`${this.apiHelper.BaseUrl}Validation/RequestValidation`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
+            // pass the data in the e object to the Validation/RequestValidation as query params
+            return this.httpClient.get(`${this.apiHelper.BaseUrl}Validation/RequestValidation`, { params: e }).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
         }
         checkValidation(e) {
-            return this.httpClient.post(`${this.apiHelper.BaseUrl}Validation/CheckValidation`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
+            // return this.httpClient.post(`${this.apiHelper.BaseUrl}Validation/CheckValidation`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
+            // pass the data in the e object to the Validation/CheckValidation as query params
+            return this.httpClient.get(`${this.apiHelper.BaseUrl}Validation/CheckValidation`, { params: e }).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
         }
         completeRequest(e) {
-            return this.httpClient.post(`${this.apiHelper.BaseUrl}Validation/CompleteRequest`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
+            // return this.httpClient.post(`${this.apiHelper.BaseUrl}Validation/CompleteRequest`, e).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
+            // pass the data in the e object to the Validation/CompleteRequest as query params
+            return this.httpClient.get(`${this.apiHelper.BaseUrl}Validation/CompleteRequest`, { params: e }).pipe(fe((i, r) => this.apiHelper.handleError(i, r)))
         }
         showCaptcha(e) {
             var i, r, s, d;

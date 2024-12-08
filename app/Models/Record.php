@@ -20,7 +20,8 @@ class Record extends Model
         'link',
         'registration_no',
         'qualification_grade',
-        'email'
+        'email',
+        'date_of_birth'
     ];
 
     protected $dates = [

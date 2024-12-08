@@ -5883,7 +5883,7 @@
 
                 // Construct the new URL
                 var baseUrl = window.location.href.replace(/\/$/, ''); // Remove trailing slash if it exists
-                var newUrl = `${baseUrl}/validation/details/${registrationNo}`;
+                var newUrl = `${baseUrl}/Validation/Details/${registrationNo}`;
 
                 // Redirect to the new URL
                 window.location.href = newUrl;

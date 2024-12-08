@@ -59,6 +59,17 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="date_of_birth">Date of Birth</label>
+                                    <input type="date" class="form-control" id="date_of_birth"
+                                        placeholder="Enter date of birth" name="date_of_birth">
+
+                                    {{-- if error message --}}
+                                    @error('date_of_birth')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="form">
                                     <label for="certificate_id">Certificate</label>
                                     <select name="certificate_id" id="certificate_id" class="form-control">

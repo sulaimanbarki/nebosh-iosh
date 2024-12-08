@@ -2,9 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AuthorizedRequestVerifier;
 use App\Models\Record;
 use App\Models\Certificate;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CertificateRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AuthorizeRequestStudent;
+use App\Mail\RejectedRequestStudent;
+use App\Mail\RejectedRequestVerifier;
+use App\Mail\VerificationRequestStudent;
+use App\Mail\VerificationRequestVerifier;
 
 class RecordController extends Controller
 {
@@ -54,7 +63,8 @@ class RecordController extends Controller
             'certificate_id' => 'required',
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
-            'certificate_log_number' => 'required'
+            'certificate_log_number' => 'required',
+            'date_of_birth' => 'required'
         ]);
 
         $registration_code = bin2hex(random_bytes(12));
@@ -74,7 +84,8 @@ class RecordController extends Controller
             'date_awarded' => $request->date_awarded,
             'certificate_log_number' => $request->certificate_log_number,
             'link' => $query_string,
-            'registration_no' => $registration_code
+            'registration_no' => $registration_code,
+            'date_of_birth' => $request->date_of_birth
         ]);
 
         return redirect()->route('records.index')->with('success', 'Record created successfully.');
@@ -123,7 +134,9 @@ class RecordController extends Controller
             'certificate_id' => 'required',
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
-            'certificate_log_number' => 'required'
+            'certificate_log_number' => 'required',
+            'date_of_birth' => 'required',
+            'email' => 'required'
         ]);
 
         $record->update([
@@ -133,7 +146,9 @@ class RecordController extends Controller
             'qualification_grade' => $request->qualification_grade == 'on' ? 'CREDIT' : null,
             'sqa_reference' => $request->sqa_reference,
             'date_awarded' => $request->date_awarded,
-            'certificate_log_number' => $request->certificate_log_number
+            'certificate_log_number' => $request->certificate_log_number,
+            'date_of_birth' => $request->date_of_birth,
+            'email' => $request->email
         ]);
 
         return redirect()->route('records.index')->with('success', 'Record updated successfully.');
@@ -175,7 +190,9 @@ class RecordController extends Controller
 
     public function ConfirmRequest($registration_no)
     {
-        $record = 'recor';
+        $record = CertificateRequest::where('uuid', $registration_no)
+            ->where('expiry_date', '>', now())
+            ->firstOrFail();
 
         return view('front.verification-step2', [
             'record' => $record
@@ -194,21 +211,137 @@ class RecordController extends Controller
     public function checkCertExists(Request $request)
     {
 
-        dd($request->all());
-        $registration_no = request('registration_no');
+        $registration_no = request('certificateKey');
         $record = Record::where('registration_no', $registration_no)->first();
 
-        if ($record) {
+        return response()->json([
+            'failedCaptcha' => false,
+            'exists' => true,
+            'void' => false,
+            'certificateKey' => $registration_no,
+            'errorMessage' => null,
+            'learnerName' => $record->learner_name,
+            'certMasterLog' => $record->certificate_log_number,
+            'certDate' => $record->date_awarded
+        ], 200);
+    }
+
+    public function validationRequest(Request $request)
+    {
+        $registration_no = request('certificateKey');
+        $record = Record::where('registration_no', $registration_no)->first();
+        $randomString = Str::random(36);
+        $authorizationCode = strtoupper(Str::random(8));
+        $expires = now()->addDays(2);
+
+        $certificate_request = CertificateRequest::create([
+            'requester_name' => $request->requesterName,
+            'requester_email' => $request->requesterEmail,
+            'requester_organisation' => $request->requesterOrganisation,
+            'record_id' => $record->id,
+            'authorisation_code' => $authorizationCode,
+            'uuid' => $randomString,
+            'expiry_date' => $expires,
+            'status' => 'pending',
+            'certificate_id' => $record->certificate_id
+        ]);
+
+
+        Mail::to($request->requesterEmail)
+            ->send(new VerificationRequestVerifier($request->requesterName, $record->certificate_log_number));
+
+        Mail::to($record->email)
+            ->send(new VerificationRequestStudent($record->learner_name, $request->requesterName, $request->requesterOrganisation, $record->certificate_log_number, $authorizationCode, $randomString, $expires));
+
+        return response()->json([
+            'failedCaptcha' => false,
+            'certificateKey' => $registration_no,
+            'exists' => true,
+            'requestSentToOwner' => true,
+            'certificateCancelled' => false,
+            'errorMessage' => null
+        ], 200);
+    }
+
+    public function checkValidation(Request $request)
+    {
+        $uuid = request('uid');
+        $certificate_request = CertificateRequest::where('uuid', $uuid)->firstOrFail();
+
+        return response()->json([
+            'failedCaptcha' => false,
+            'exists' => true,
+            'expired' => $certificate_request->expiry_date < now(),
+            'requesterName' => $certificate_request->requester_name,
+            'requesterOrg' => $certificate_request->requester_organisation,
+            'requesterEmail' => $certificate_request->requester_email,
+            'dateRequested' => $certificate_request->created_at,
+            'certificateName' => $certificate_request->record->learner_name,
+            'certificateDate' => $certificate_request->record->date_awarded,
+            'masterLogNo' => $certificate_request->record->certificate_log_number,
+            'qualificationName' => $certificate_request->record->certificate->name
+        ], 200);
+    }
+
+    public function completeRequest(Request $request)
+    {
+        $uuid = request('validationRequestId');
+        $authorisation_code = request('authCode');
+        $certificate_request = CertificateRequest::where('uuid', $uuid)
+            ->where('expiry_date', '>', now())
+            ->where('authorisation_code', $request->authCode)
+            ->where('status', 'pending')
+            ->first();
+
+        if (!$certificate_request) {
             return response()->json([
-                'status' => 'success',
-                'message' => 'Record found',
-                'record' => $record
-            ]);
-        } else {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Record not found'
-            ]);
+                'failedCaptcha' => false,
+                'exists' => true,
+                'expired' => false,
+                'requesterName' => null,
+                'requesterOrg' => null,
+                'requesterEmail' => null,
+                'dateRequested' => null,
+                'certificateName' => null,
+                'certificateDate' => null,
+                'masterLogNo' => null,
+                'qualificationName' => null
+            ], 200);
         }
+
+        $record = $certificate_request->record;
+
+        $accepted = $request->accepted;
+
+        if ($accepted == 'true') {
+            $certificate_request->status = 'accepted';
+            $certificate_request->save();
+
+            Mail::to($record->email)
+                ->send(new AuthorizeRequestStudent($record->learner_name, $certificate_request->requester_name, $certificate_request->requester_organisation, $record->certificate_log_number));
+
+            Mail::to($certificate_request->requester_email)
+                ->send(new AuthorizedRequestVerifier($certificate_request, $record, $certificate_request->certificate));
+        } else {
+            $certificate_request->status = 'rejected';
+            $certificate_request->save();
+
+            Mail::to($record->email)
+                ->send(new RejectedRequestStudent($record, $certificate_request));
+
+            Mail::to($certificate_request->requester_email)
+                ->send(new RejectedRequestVerifier($record, $certificate_request));
+        }
+
+        return response()->json([
+            'certificateKey' => $uuid,
+            'authCodeAccepted' => $certificate_request->authorisation_code == $authorisation_code,
+            'certificateCancelled' => false,
+            'learnerName' => $certificate_request->record->learner_name,
+            'learnerNumber' => $certificate_request->record->learner_number,
+            'qualificationName' => $certificate_request->record->certificate->name,
+            'dateAwarded' => $certificate_request->record->date_awarded,
+            'certificateLogNumber' => $certificate_request->record->certificate_log_number
+        ], 200);
     }
 }

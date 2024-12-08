@@ -103,6 +103,22 @@ Route::get('/Validation/StoreCaptcha', function (Request $request) {
 //     "certDate": "2022-08-09"
 // }
 
+// http://127.0.0.1:8000/Validation/RequestValidation
+// {
+//     "failedCaptcha": false,
+//     "certificateKey": "U420P5AW21UOIGD36XSTE6RN",
+//     "exists": true,
+//     "requestSentToOwner": true,
+//     "certificateCancelled": false,
+//     "errorMessage": null
+// }
+
+Route::get('/Validation/RequestValidation', [RecordController::class, 'validationRequest'])->name('validation.verification.validationRequest');
+// Validation/CheckValidation
+Route::get('/Validation/CheckValidation', [RecordController::class, 'checkValidation'])->name('validation.verification.checkValidation');
+// Validation/CompleteRequest
+Route::get('/Validation/CompleteRequest', [RecordController::class, 'completeRequest'])->name('validation.verification.completeRequest');
+
 
 // Validation/ValidateCaptcha
 // {"success":true,"expires":"2024-12-04T22:24:28.4323629+00:00"}
