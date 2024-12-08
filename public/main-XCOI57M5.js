@@ -25865,7 +25865,7 @@ var yE = [{
                 type: t
             }),
             t.\u0275inj = N({
-                imports: [Jm.forRoot(yE), Jm]
+                imports: [Jm.forRoot(yE, { useHash: false }), Jm]
             });
         let n = t;
         return n

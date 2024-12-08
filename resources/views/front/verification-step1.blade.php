@@ -5877,7 +5877,7 @@
     <script>
         window.onload = function() {
             var record = @json($record);
-            setTimeout(function() {
+            // setTimeout(function() {
                 // Ensure `record?.registration_no` is safely handled
                 var registrationNo = record?.registration_no ? record.registration_no : '';
 
@@ -5887,7 +5887,7 @@
 
                 // Redirect to the new URL
                 window.location.href = newUrl;
-            }, 2000);
+            // }, 2000);
         };
     </script>
 
