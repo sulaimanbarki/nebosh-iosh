@@ -64,14 +64,15 @@ class RecordController extends Controller
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
             'certificate_log_number' => 'required',
-            'date_of_birth' => 'required'
+            'date_of_birth' => 'required',
+            'email' => 'required'
         ]);
 
         $registration_code = bin2hex(random_bytes(12));
         $registration_code = strtoupper($registration_code);
 
         // https://neboshazurewebsites.net/validation/details/F64051CC87698453D34ACB8
-        $query_string = env('APP_URL') . '/validation/details/' . $registration_code;
+        $query_string = env('APP_URL') . '/Validation/Details/' . $registration_code;
 
         \QrCode::format('png')->size(200)->generate($query_string, public_path('images/' . $registration_code . '.png'));
 
@@ -85,7 +86,8 @@ class RecordController extends Controller
             'certificate_log_number' => $request->certificate_log_number,
             'link' => $query_string,
             'registration_no' => $registration_code,
-            'date_of_birth' => $request->date_of_birth
+            'date_of_birth' => $request->date_of_birth,
+            'email' => $request->email
         ]);
 
         return redirect()->route('records.index')->with('success', 'Record created successfully.');
