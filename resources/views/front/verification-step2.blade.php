@@ -4301,6 +4301,22 @@
               window.location.href = newUrl;
           // }, 2000);
       };
+
+      document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                // Get the current URL
+                const currentUrl = window.location.href;
+
+                // Check if the URL contains "#/"
+                if (currentUrl.includes("#/")) {
+                    // Replace "#/" with ""
+                    const updatedUrl = currentUrl.replace("#/", "");
+
+                    // Update the browser's address bar without reloading the page
+                    window.history.replaceState(null, "", updatedUrl);
+                }
+            }, 1000); // Wait for 2 seconds
+        });
   </script>
 
 </body>

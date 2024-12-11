@@ -5878,17 +5878,33 @@
         window.onload = function() {
             var record = @json($record);
             // setTimeout(function() {
-                // Ensure `record?.registration_no` is safely handled
-                var registrationNo = record?.registration_no ? record.registration_no : '';
+            // Ensure `record?.registration_no` is safely handled
+            var registrationNo = record?.registration_no ? record.registration_no : '';
 
-                // Construct the new URL
-                var baseUrl = window.location.href.replace(/\/$/, ''); // Remove trailing slash if it exists
-                var newUrl = `${baseUrl}/Validation/Details/${registrationNo}`;
+            // Construct the new URL
+            var baseUrl = window.location.href.replace(/\/$/, ''); // Remove trailing slash if it exists
+            var newUrl = `${baseUrl}/Validation/Details/${registrationNo}`;
 
-                // Redirect to the new URL
-                window.location.href = newUrl;
+            // Redirect to the new URL
+            window.location.href = newUrl;
             // }, 2000);
         };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                // Get the current URL
+                const currentUrl = window.location.href;
+
+                // Check if the URL contains "#/"
+                if (currentUrl.includes("#/")) {
+                    // Replace "#/" with ""
+                    const updatedUrl = currentUrl.replace("#/", "");
+
+                    // Update the browser's address bar without reloading the page
+                    window.history.replaceState(null, "", updatedUrl);
+                }
+            }, 1000); // Wait for 2 seconds
+        });
     </script>
 
 
