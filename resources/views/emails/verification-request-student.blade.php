@@ -5,6 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verification Request</title>
+    <style>
+        * {
+            color: black !important;
+        }
+        a {
+            color: #15c !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,7 +90,7 @@
                         <br>
                     </span>
                     <a href="{{ $base_url }}/ConfirmRequest/{{ $uuid }}" target="_blank">
-                        {{ $base_url }}/ConfirmRequest/{{ $uuid }}
+                        https://nebosh-validation.verisecure.org/#/ConfirmRequest/{{ $uuid }}
                     </a>
                     <br>
                     <br>
