@@ -14,7 +14,7 @@
         src="https://www.gstatic.com/recaptcha/releases/pPK749sccDmVW_9DSeTMVvh2/recaptcha__en.js" crossorigin="anonymous"
         integrity="sha384-BJuEtmqk8gvp2kvOiXzxtaoRQQS7QjSOSAczV0tKC29lpbOt/RFR43n1iVnzO4Em"></script>
     <script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
-    <link rel="icon" type="image/x-icon" href="assets/corp_logo.gif">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}"/>
     <style>
         @font-face {
             font-family: 'Roboto';
