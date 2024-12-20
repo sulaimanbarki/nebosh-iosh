@@ -5875,7 +5875,7 @@
     <script src="polyfills-RT5I6R6G.js" type="module"></script>
     <script src="main-XCOI57M5.js" type="module"></script>
 
-    <script>
+    {{-- <script>
         window.onload = function() {
             var record = @json($record);
             // setTimeout(function() {
@@ -5906,7 +5906,22 @@
                 }
             }, 1000); // Wait for 2 seconds
         });
-    </script>
+    </script> --}}
+
+    <script>
+        window.onload = function() {
+                var record = @json($record);
+                // Ensure `record?.registration_no` is safely handled
+                var registrationNo = record?.registration_no ? record.registration_no : '';
+    
+                // Construct the new URL
+                var baseUrl = window.location.href.replace(/\/$/, ''); // Remove trailing slash if it exists
+                var newUrl = `${baseUrl}/Validation/Details/${registrationNo}`;
+    
+                // Update the browser's address bar without reloading the page
+                window.history.replaceState(null, "", newUrl);
+            };
+      </script>
 
 
 

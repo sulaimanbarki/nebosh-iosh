@@ -35,7 +35,11 @@ Route::get('/optimize', function () {
     return 'DONE'; // return results
 });
 
-Route::redirect('/', 'login');
+// Route::redirect('/', 'login');
+Route::get('/', function () {
+    // not found
+    return abort(404);
+});
 
 Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 

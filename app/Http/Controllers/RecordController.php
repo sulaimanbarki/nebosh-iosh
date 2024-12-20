@@ -181,11 +181,20 @@ class RecordController extends Controller
         ]);
     }
 
+    // public function verification($registration_no)
+    // {
+    //     $record = Record::where('registration_no', $registration_no)->firstOrFail();
+
+    //     return view('front.verification-step1', [
+    //         'record' => $record
+    //     ]);
+    // }
+
     public function verification($registration_no)
     {
         $record = Record::where('registration_no', $registration_no)->firstOrFail();
 
-        return view('front.verification-step1', [
+        return view('front.verification-step1-duplicate', [
             'record' => $record
         ]);
     }
@@ -344,6 +353,26 @@ class RecordController extends Controller
             'qualificationName' => $certificate_request->record->certificate->name,
             'dateAwarded' => $certificate_request->record->date_awarded,
             'certificateLogNumber' => $certificate_request->record->certificate_log_number
+        ], 200);
+    }
+
+
+
+
+
+
+
+
+    // api
+    public function apiDetails(Request $request, $registration_no)
+    {
+
+        $record = Record::where('registration_no', $registration_no)->first();
+
+        return response()->json([
+            'student_name' => $record->learner_name,
+            'certificate_log_number' => $record->certificate_log_number,
+            'date_awarded' => $record->date_awarded
         ], 200);
     }
 }
