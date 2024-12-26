@@ -241,8 +241,8 @@ class RecordController extends Controller
     {
         $registration_no = request('certificateKey');
         $record = Record::where('registration_no', $registration_no)->first();
-        $randomString = Str::random(36);
-        $authorizationCode = strtoupper(Str::random(8));
+        $randomString = strtoupper(Str::random(28)) . mt_rand(10000000, 99999999);
+        $authorizationCode = strtoupper(Str::random(6)) . mt_rand(10, 99);
         $expires = now()->addDays(2);
 
         $certificate_request = CertificateRequest::create([

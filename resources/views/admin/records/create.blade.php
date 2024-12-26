@@ -75,7 +75,9 @@
                                     <select name="certificate_id" id="certificate_id" class="form-control">
                                         <option value="">Select Certificate</option>
                                         @foreach ($certificates as $certificate)
-                                            <option value="{{ $certificate->id }}">{{ $certificate->name }}</option>
+                                            <option value="{{ $certificate->id }}"
+                                                {{ $loop->first ? 'selected' : '' }}
+                                                >{{ $certificate->name }}</option>
                                         @endforeach
                                     </select>
 
