@@ -16950,24 +16950,26 @@ var Md = ( () => {
                 this.fetchDetails(t))
             }
             )
-          }, 1000);
+          }, 3000);
             
         }
         fetchDetails(e) {
             let baseUrl = window.location.origin;
             // this.http.get(`https://nebosh.azureswebsite.net/api/details/${e}`).subscribe(t => {
-            this.http.get(`${baseUrl}/api/details/${e}`).subscribe(t => {
-                this.learnerDetailsForm.patchValue({
-                    learnerName: t.student_name ?? "",
-                    logNumber: t.certificate_log_number ?? "",
-                    dateOfAchievement: t.date_awarded ?? ""
-                }),
-                this.learnerDetailsForm.markAllAsTouched(),
-                this.isFormValid = this.learnerDetailsForm.valid,
-                this.learnerDetailsForm.disable(),
-                console.log(this.isFormValid)
-            }
-            )
+            setTimeout(() => {
+                this.http.get(`${baseUrl}/api/details/${e}`).subscribe(t => {
+                        this.learnerDetailsForm.patchValue({
+                            learnerName: t.student_name ?? "",
+                            logNumber: t.certificate_log_number ?? "",
+                            dateOfAchievement: t.date_awarded ?? ""
+                        }),
+                        this.learnerDetailsForm.markAllAsTouched(),
+                        this.isFormValid = this.learnerDetailsForm.valid,
+                        this.learnerDetailsForm.disable(),
+                        console.log(this.isFormValid)
+                    }
+                )
+            }, 4000);
         }
         onSubmit() {
             let e = this.yourDetailsForm.value
