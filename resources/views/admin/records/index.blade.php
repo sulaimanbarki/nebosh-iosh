@@ -59,7 +59,7 @@
                                         <td>{{ $record->certificate->name }}</td>
                                         <td>{{ $record->qualification_grade == 'CREDIT' ? 'CREDIT' : 'N/A' }}</td>
                                         <td>
-                                            <a href="{{ route('validation.verification.step1', $record->registration_no) }}"
+                                            <a href="{{ $record->link }}"
                                                 target="_blank">
                                                 <img src="/images/{{ $record->registration_no }}.png" alt=""
                                                     width="50">
