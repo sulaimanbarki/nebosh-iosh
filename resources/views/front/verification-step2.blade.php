@@ -8,12 +8,12 @@
     <title>nebosh VALIDATION</title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy"
+    {{-- <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; connect-src 'self' https://localhost:7091">
     <script type="text/javascript" async="" charset="utf-8"
         src="https://www.gstatic.com/recaptcha/releases/pPK749sccDmVW_9DSeTMVvh2/recaptcha__en.js" crossorigin="anonymous"
         integrity="sha384-BJuEtmqk8gvp2kvOiXzxtaoRQQS7QjSOSAczV0tKC29lpbOt/RFR43n1iVnzO4Em"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
+    <script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script> --}}
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}"/>
     <style>
         @font-face {

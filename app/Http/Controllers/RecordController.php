@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\AuthorizedRequestVerifier;
 use App\Models\Record;
 use App\Models\Certificate;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\CertificateRequest;
+use App\Mail\RejectedRequestStudent;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AuthorizeRequestStudent;
-use App\Mail\RejectedRequestStudent;
 use App\Mail\RejectedRequestVerifier;
+use App\Mail\AuthorizedRequestVerifier;
 use App\Mail\VerificationRequestStudent;
 use App\Mail\VerificationRequestVerifier;
 
@@ -64,9 +65,11 @@ class RecordController extends Controller
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
             'certificate_log_number' => 'required',
-            'date_of_birth' => 'required',
+            'date_of_birth' => 'required|date_format:d/m/Y',
             'email' => 'required'
         ]);
+
+        $date_of_birth = Carbon::createFromFormat('d/m/Y', $request->date_of_birth);
 
         $registration_code = bin2hex(random_bytes(12));
         $registration_code = strtoupper($registration_code);
@@ -86,7 +89,7 @@ class RecordController extends Controller
             'certificate_log_number' => $request->certificate_log_number,
             'link' => $query_string,
             'registration_no' => $registration_code,
-            'date_of_birth' => $request->date_of_birth,
+            'date_of_birth' => $date_of_birth,
             'email' => $request->email
         ]);
 
@@ -137,9 +140,11 @@ class RecordController extends Controller
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
             'certificate_log_number' => 'required',
-            'date_of_birth' => 'required',
+            'date_of_birth' => 'required|date_format:d/m/Y',
             'email' => 'required'
         ]);
+
+        $date_of_birth = Carbon::createFromFormat('d/m/Y', $request->date_of_birth);
 
         $record->update([
             'learner_name' => $request->learner_name,
@@ -149,7 +154,7 @@ class RecordController extends Controller
             'sqa_reference' => $request->sqa_reference,
             'date_awarded' => $request->date_awarded,
             'certificate_log_number' => $request->certificate_log_number,
-            'date_of_birth' => $request->date_of_birth,
+            'date_of_birth' => $date_of_birth,
             'email' => $request->email
         ]);
 

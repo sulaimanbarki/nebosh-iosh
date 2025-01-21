@@ -1,5 +1,22 @@
 @extends('admin.layout')
+
+@push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.2/css/pikaday.min.css">
+
+@endpush
 @section('app')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <style>
+    /* Optionally, you can add custom styling here */
+    .ui-datepicker {
+      font-size: 14px;
+    }
+  </style>
+
+
     <div class="row mb-2">
         <div class="col-sm-6">
             <h1 class="m-0">Records</h1>
@@ -60,9 +77,12 @@
                                 </div>
 
                                 <div class="form-group">
+
                                     <label for="date_of_birth">Date of Birth</label>
-                                    <input type="date" class="form-control" id="date_of_birth"
-                                        placeholder="Enter date of birth" name="date_of_birth">
+                                    {{-- <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" required> --}}
+
+                                    <input type="text" class="form-control" id="date_of_birth"
+                                        placeholder="Enter date of birth" name="date_of_birth" placeholder="DD/MM/YYYY" required>
 
                                     {{-- if error message --}}
                                     @error('date_of_birth')
@@ -145,4 +165,22 @@
     </div>
     <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
+
+
+
+    <script>
+
+        $('#date_of_birth').datepicker({
+        dateFormat: 'dd/mm/yy',  // Set the format to dd/mm/yyyy
+        changeMonth: true,        // Optionally, allow changing month
+        changeYear: true,         // Optionally, allow changing year
+        defaultViewDate: new Date(), // Set today's date as the default date
+        setDate: new Date(),      // Default date as today's date
+      });
+      </script>
 @endsection
+
+@push('scripts')
+
+
+@endpush
