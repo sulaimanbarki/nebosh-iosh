@@ -48,7 +48,7 @@
                 <br>
                 Thank you for your recent verification request for certificate master log number {{ $record->certificate_log_number }}. We
                 are pleased to advise you that NEBOSH has received authorisation to process your request, and we can
-                confirm that NEBOSH issued this certificate to {{ $record->learner_name ?? '' }} on {{ date('m/d/Y', strtotime($record->date_awarded)) }}.<br>
+                confirm that NEBOSH issued this certificate to {{ $record->learner_name ?? '' }} on {{ date('d/m/Y', strtotime($record->date_awarded)) }}.<br>
                 .<br>
                 <br>
                 <strong style="text-decoration:underline">Please note</strong> although NEBOSH does take every step to
@@ -66,7 +66,7 @@
                         <strong>Please check this against government issued ID to make sure the dates
                             match.</strong><br>
                         <br>
-                        <strong>Date of birth: </strong>{{ date('m/d/Y', strtotime($record->date_of_birth)) }}<br>
+                        <strong>Date of birth: </strong>{{ date('d/m/Y', strtotime($record->date_of_birth)) }}<br>
                         <br>
                     </li><br>
                     <li>Learner full name <strong>– check against government issued ID</strong>.<br>
