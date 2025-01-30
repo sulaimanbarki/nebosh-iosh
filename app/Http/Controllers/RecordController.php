@@ -206,11 +206,15 @@ class RecordController extends Controller
 
     public function ConfirmRequest($registration_no)
     {
-        $record = CertificateRequest::where('uuid', $registration_no)
+        $certificateRequest = CertificateRequest::where('uuid', $registration_no)
             ->where('expiry_date', '>', now())
             ->firstOrFail();
+        $certificate = $certificateRequest->certificate;
+        $record = $certificateRequest->record;
 
-        return view('front.verification-step2', [
+        return view('front.verification-step2-duplicate', [
+            'certificateRequest' => $certificateRequest,
+            'certificate' => $certificate,
             'record' => $record
         ]);
     }
@@ -321,7 +325,10 @@ class RecordController extends Controller
                 'certificateName' => null,
                 'certificateDate' => null,
                 'masterLogNo' => null,
-                'qualificationName' => null
+                'qualificationName' => null,
+                'success' => false,
+                'error' => 'Invalid authorization code',
+                'body' => null
             ], 200);
         }
 
@@ -357,7 +364,10 @@ class RecordController extends Controller
             'learnerNumber' => $certificate_request->record->learner_number,
             'qualificationName' => $certificate_request->record->certificate->name,
             'dateAwarded' => $certificate_request->record->date_awarded,
-            'certificateLogNumber' => $certificate_request->record->certificate_log_number
+            'certificateLogNumber' => $certificate_request->record->certificate_log_number,
+            'success' => true,
+            'error' => null,
+            'body' => 'Confirmation requested send successfully!'
         ], 200);
     }
 
