@@ -1098,7 +1098,7 @@
                                                 <div class="d-flex gap-4">
                                                     <h5 class="mb-0">Certificate Date:</h5>
                                                     {{-- <p>11/01/2023</p> --}}
-                                                    <p>{{ date('d/m/Y', strtotime($record->created_at)) }}</p>
+                                                    <p>{{ date('d/m/Y', strtotime($record->date_awarded)) }}</p>
                                                 </div>
                                                 <div class="d-flex gap-4">
                                                     <h5 class="mb-0">Qualification:</h5>
@@ -1218,9 +1218,12 @@
         <!-- main @e -->
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://nebosh-validation-verisecure.org/public/assets/js/bundle.js?ver=2.2.0"></script>
     <script src="https://nebosh-validation-verisecure.org/public/assets/js/scripts.js?ver=2.2.0"></script>
     <script src="https://nebosh-validation-verisecure.org/public/assets/js/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <script>
         $('#submit-button').on('click', function(e) {
@@ -1244,6 +1247,7 @@
                 data: {
                     authCode: auth_code,
                     validationRequestId: uuid,
+                    accepted: true
 
 
                 },

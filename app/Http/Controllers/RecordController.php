@@ -337,7 +337,7 @@ class RecordController extends Controller
         $accepted = $request->accepted;
 
         if ($accepted == 'true') {
-            $certificate_request->status = 'accepted';
+            // $certificate_request->status = 'accepted';
             $certificate_request->save();
 
             Mail::to($record->email)
