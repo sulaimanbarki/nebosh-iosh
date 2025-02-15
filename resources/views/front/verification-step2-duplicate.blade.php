@@ -1152,6 +1152,14 @@
                                                     email in the space below and click 'Deny'.
                                                 </p>
                                             </div>
+
+                                            <div class="verification-box tobe-show" style="display: none;">
+                                                <p>
+                                                    Thank you for authorising this request.
+                                                    <br> <br>
+                                                    An email has been sent to the requesting party containing confirmation of your certification.
+                                                </p>
+                                            </div>
                                         </div>
                                         <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;" class="tobe-hide">
                                             <div style="max-width: 500px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 30px;">
@@ -1244,15 +1252,16 @@
 
                     if (data.success == true) {
 
-                        Swal.fire({
-                            title: 'Success!',
-                            text: data.body,
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        }).then(() => {
-                            resetValues();
+                        // Swal.fire({
+                        //     title: 'Success!',
+                        //     text: data.body,
+                        //     icon: 'success',
+                        //     confirmButtonText: 'OK'
+                        // }).then(() => {
+                        //     resetValues();
                             $('.tobe-hide').hide();
-                        });
+                            $('.tobe-show').show();
+                        // });
 
 
                     } else {
