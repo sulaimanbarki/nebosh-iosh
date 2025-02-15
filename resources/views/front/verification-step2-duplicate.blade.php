@@ -1083,7 +1083,10 @@
                       ">
 
                                         <!--<img src="https://nebosh-validation-verisecure.org/public/assets/images/logo/neboshLogo.png"  style="width: 250px; margin: 0 auto">-->
-                                        <div _ngcontent-ng-c3885976823="" style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;"><img _ngcontent-ng-c3885976823="" src="{{ asset('assets/NeboshLogo.jpg') }}" style="width: 250px;"></div>
+                                        <div _ngcontent-ng-c3885976823=""
+                                            style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;">
+                                            <img _ngcontent-ng-c3885976823="" src="{{ asset('assets/NeboshLogo.jpg') }}"
+                                                style="width: 250px;"></div>
 
                                     </div>
                                     <div class="content-wrapper">
@@ -1136,14 +1139,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div
-                                            style="
-                          display: flex;
-                          flex-direction: column;
-                          justify-content: center;
-                          align-items: center;
-                        ">
-                                            <div class="verification-box">
+                                        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                            <div class="verification-box tobe-hide">
                                                 <p>
                                                     If you consent to this verification, please enter
                                                     the authentication code provided to you by email in
@@ -1156,22 +1153,8 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <div
-                                            style="
-                          display: flex;
-                          flex-direction: row;
-                          justify-content: center;
-                          align-items: center;
-                        ">
-                                            <div
-                                                style="
-                            max-width: 500px;
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: center;
-                            align-items: center;
-                            gap: 30px;
-                          ">
+                                        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;" class="tobe-hide">
+                                            <div style="max-width: 500px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 30px;">
 
 
                                                 <label class="inp">
@@ -1218,7 +1201,8 @@
         <!-- main @e -->
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://nebosh-validation-verisecure.org/public/assets/js/bundle.js?ver=2.2.0"></script>
     <script src="https://nebosh-validation-verisecure.org/public/assets/js/scripts.js?ver=2.2.0"></script>
     <script src="https://nebosh-validation-verisecure.org/public/assets/js/sweetalert.min.js"></script>
@@ -1266,9 +1250,8 @@
                             icon: 'success',
                             confirmButtonText: 'OK'
                         }).then(() => {
-
                             resetValues();
-
+                            $('.tobe-hide').hide();
                         });
 
 
