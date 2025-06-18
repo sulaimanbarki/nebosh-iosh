@@ -26,7 +26,7 @@ Thank you for authorising the verification request received from {{ $requester_n
 <br>
 We are writing to advise you, that confirmation that NEBOSH issued this certificate has now been sent to {{ $requester_name }}, {{ $requester_organisation }}. <br>
 <br>
-If you authorised this request by mistake, please <a href="#">contact NEBOSH</a> immediately.<br>
+If you authorised this request by mistake, please <a href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSJil6gZlcdizVtiz8Uk9rhJQYqVjjtYFaESE-2Fi1oK471w-3D-3D5emb_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph1X-2BeXue-2BwAQuAm5yBE5J70igppKJGFaZsaRILETha7Y6jJoli-2Bq3mfRV2MO61r8O86WeC-2FAlOILTeH21MLJkj-2FgN396RIPh46Y6F2QDXE2msi4BFmbbkQDJTy6f1chTtuGTCnbc47fEIP1iuWI-2BWnC-2FrjtVGv9gu2csdw29CVJj5dJwk45SG064TQgsKB0o9o-3D" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSJil6gZlcdizVtiz8Uk9rhJQYqVjjtYFaESE-2Fi1oK471w-3D-3D5emb_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph1X-2BeXue-2BwAQuAm5yBE5J70igppKJGFaZsaRILETha7Y6jJoli-2Bq3mfRV2MO61r8O86WeC-2FAlOILTeH21MLJkj-2FgN396RIPh46Y6F2QDXE2msi4BFmbbkQDJTy6f1chTtuGTCnbc47fEIP1iuWI-2BWnC-2FrjtVGv9gu2csdw29CVJj5dJwk45SG064TQgsKB0o9o-3D&amp;source=gmail&amp;ust=1733720138573000&amp;usg=AOvVaw1pb-vLS1uyelB0kSJocbaD">contact NEBOSH</a> immediately.<br>
 <br>
 <br>
 NEBOSH Team<br>

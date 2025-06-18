@@ -66,8 +66,9 @@
                         certificate owner.</li><br>
                     <li>If you feel that the certificate or person producing the certificate is suspicious, please
                         report this to NEBOSH immediately using our “Report suspicious certificate activity form” on our
-                        <a href="#"
-                            target="_blank">verifications
+                        <a href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DnZRh_-2Fc6hTi5vBfFycg5L837yivjvgH4ti2w23vfSPCEeywOuYfWg-2B3Cq80g2ntmZuGV38EHxbg9fYfkMje1eSeGGvVW9KQwe3-2FW3c4GKT5M7N3WAE7P9A5UJEtsm2-2FjFUPKw1i9ly4GiwnwucX4UHa2lemWEEAkeABlA3qa8NlVUCpnha3TAy7Ib1yqDpPqoszADhVFkwLJmMdrFyjltTtZ8JoJSXn4SPt69ASOsQGGJDaXOz1TqiB7HTlNgkBhHlj3A"
+                            target="_blank"
+                            data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DnZRh_-2Fc6hTi5vBfFycg5L837yivjvgH4ti2w23vfSPCEeywOuYfWg-2B3Cq80g2ntmZuGV38EHxbg9fYfkMje1eSeGGvVW9KQwe3-2FW3c4GKT5M7N3WAE7P9A5UJEtsm2-2FjFUPKw1i9ly4GiwnwucX4UHa2lemWEEAkeABlA3qa8NlVUCpnha3TAy7Ib1yqDpPqoszADhVFkwLJmMdrFyjltTtZ8JoJSXn4SPt69ASOsQGGJDaXOz1TqiB7HTlNgkBhHlj3A&amp;source=gmail&amp;ust=1733723624352000&amp;usg=AOvVaw2ImnLlSC0A1230IUcxz9Kh">verifications
                             page</a>, where you will also find our <em>“Verifying credentials to prevent qualification
                             fraud – Guide for Employers”</em>.
                     </li><br>

@@ -61,8 +61,9 @@
             our <em>“Verifying credentials to prevent qualification fraud – Guide for Employers”</em>. This certificate
             provides more hints and tips on checking the authenticity of NEBOSH unit certificates and Parchments and is
             available on our the <a
-                href="#"
-                target="_blank">verifications
+                href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DHBo__-2Fc6hTi5vBfFycg5L837yivjvgH4ti2w23vfSPCEeywPDaU1446sREHICbV64yHEp-2B8h5-2BPFeNb-2FDjj7al7ObQWK0pVC5bHFurzKLuA8hsx-2BgipWTNJFzGv5k-2Fwyh-2F-2B6-2BDZJsOcpFeQGIm8rs3K2grtfpSc4StGp4QNerhYi07JHYPMhauTC7JQ1-2B8vLPNmiaIb-2Fs98yp4ohCvvAmm-2F9XOfKUqP0jFPjf9TsjZteqyyzBP3io0BVS-2BQKO0fW2lUeq"
+                target="_blank"
+                data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DHBo__-2Fc6hTi5vBfFycg5L837yivjvgH4ti2w23vfSPCEeywPDaU1446sREHICbV64yHEp-2B8h5-2BPFeNb-2FDjj7al7ObQWK0pVC5bHFurzKLuA8hsx-2BgipWTNJFzGv5k-2Fwyh-2F-2B6-2BDZJsOcpFeQGIm8rs3K2grtfpSc4StGp4QNerhYi07JHYPMhauTC7JQ1-2B8vLPNmiaIb-2Fs98yp4ohCvvAmm-2F9XOfKUqP0jFPjf9TsjZteqyyzBP3io0BVS-2BQKO0fW2lUeq&amp;source=gmail&amp;ust=1733644830293000&amp;usg=AOvVaw2DmejmGmIRgcIF3EPdB1-5">verifications
                 page</a> of our website. <br>
             <br>
             <strong style="text-decoration:underline">Please note: </strong>to help NEBOSH in our investigations of
@@ -70,8 +71,9 @@
             organisation and email address will also be held for monitoring purposes.<br>
             <br>
             If you have any further questions, please do not hesitate to <a
-                href="#"
-                target="_blank">contact
+                href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSJil6gZlcdizVtiz8Uk9rhJQYqVjjtYFaESE-2Fi1oK471w-3D-3Dn4nm_-2Fc6hTi5vBfFycg5L837yivjvgH4ti2w23vfSPCEeywPDaU1446sREHICbV64yHEp-2B8h5-2BPFeNb-2FDjj7al7ObQdVEeVK5lwC27Ax-2ButKa8XBXPOy-2FRvDxSzQThSmZXgln4OVAtrcyqNdSLW6sueN-2FjRjAr4knD2anfRK1LThaqM5T28an3C9-2BXZOJXORzcuVOhIj4PRK8dheSnoxcoAElzgUdcKK2oQ9rcbz3QjViP7Pr7FwqdW4Vq66Fvj00Ls6u"
+                target="_blank"
+                data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSJil6gZlcdizVtiz8Uk9rhJQYqVjjtYFaESE-2Fi1oK471w-3D-3Dn4nm_-2Fc6hTi5vBfFycg5L837yivjvgH4ti2w23vfSPCEeywPDaU1446sREHICbV64yHEp-2B8h5-2BPFeNb-2FDjj7al7ObQdVEeVK5lwC27Ax-2ButKa8XBXPOy-2FRvDxSzQThSmZXgln4OVAtrcyqNdSLW6sueN-2FjRjAr4knD2anfRK1LThaqM5T28an3C9-2BXZOJXORzcuVOhIj4PRK8dheSnoxcoAElzgUdcKK2oQ9rcbz3QjViP7Pr7FwqdW4Vq66Fvj00Ls6u&amp;source=gmail&amp;ust=1733644830293000&amp;usg=AOvVaw0LgPl4SkAiorofQKvPib8U">contact
                 NEBOSH</a>.<br>
             <br>
             Regards<br>

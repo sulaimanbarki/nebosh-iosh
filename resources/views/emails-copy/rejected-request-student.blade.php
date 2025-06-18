@@ -63,8 +63,9 @@
                         <li>If you feel that the person requesting the validation is doing so to obtain information for
                             illegal purposes or believe your certificate has been copied, please report this to NEBOSH
                             immediately using our <em>“Report suspicious certificate activity form”</em> on our <a
-                                href="#"
-                                target="_blank">verifications
+                                href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DBt8Q_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph3nhINOaca4owPSlog5zuTc5bYc6r6PwZiP-2Fx6Hq0XGpZS6-2F6JdXObTuSF2fxry1cBC7GyT5FpRI-2BRvvCVVgaHE6M6Owg0HO2z5M-2BIh4qiMNruAPpUHGCNbzJGIfIvPIFeywNn6pDFgh14uNVPLRs56S5ra6vdhsIqQyGHCrzEsyLOXcc06LjdLwM7GzYbico8-3D"
+                                target="_blank"
+                                data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DBt8Q_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph3nhINOaca4owPSlog5zuTc5bYc6r6PwZiP-2Fx6Hq0XGpZS6-2F6JdXObTuSF2fxry1cBC7GyT5FpRI-2BRvvCVVgaHE6M6Owg0HO2z5M-2BIh4qiMNruAPpUHGCNbzJGIfIvPIFeywNn6pDFgh14uNVPLRs56S5ra6vdhsIqQyGHCrzEsyLOXcc06LjdLwM7GzYbico8-3D&amp;source=gmail&amp;ust=1733723625232000&amp;usg=AOvVaw2KQyfpkdBhFQhLYvDp9lzR">verifications
                                 page</a>. NEBOSH will conduct an investigation into this matter and also provide
                             guidance on
                             what to do to prevent unauthorised individuals using your certificate for their personal
@@ -74,8 +75,9 @@
                     To help you keep your certificate safe NEBOSH has also produced a <em>“Keeping your certificates
                         safe –
                         Guide for learners”</em>. This is also available to view on our <a
-                        href="#"
-                        target="_blank">verifications
+                        href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DTRf7_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph3nhINOaca4owPSlog5zuTc0EyQvpyPekPnCEh9w8MCrJ0uJyySrtPsSDTgYIT38f5we5Mw6QikA-2FnLZl1sPS40CnlnLrHZt98nsxsW5vuTbfTWbMXdrWVFdYS8wJLxMRNC2uAL0ZeidNj8gVJMkEJrN1jdcwoS3to-2FuFqQAMuq9lcj-2BjjCryggDe-2BGPnHQjQk-3D"
+                        target="_blank"
+                        data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DTRf7_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph3nhINOaca4owPSlog5zuTc0EyQvpyPekPnCEh9w8MCrJ0uJyySrtPsSDTgYIT38f5we5Mw6QikA-2FnLZl1sPS40CnlnLrHZt98nsxsW5vuTbfTWbMXdrWVFdYS8wJLxMRNC2uAL0ZeidNj8gVJMkEJrN1jdcwoS3to-2FuFqQAMuq9lcj-2BjjCryggDe-2BGPnHQjQk-3D&amp;source=gmail&amp;ust=1733723625232000&amp;usg=AOvVaw30a7uqtS3UJ1wxeEhDrWXf">verifications
                         page</a>. <br>
                     <br>
                     Regards<br>

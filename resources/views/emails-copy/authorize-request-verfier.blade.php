@@ -91,8 +91,9 @@
                 Once you have completed all the checks, if you believe that there is suspicious activity around the
                 certificate you are verifying please report this to NEBOSH using our “Report suspicious certificate
                 activity form” on our <a
-                    href="#"
-                    target="_blank">verifications
+                    href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DEiAK_G5ih5bDnXOHFCn616ZUqsUcL-2FmMIbprnXH6lyJGKV6DWKaLGBjDc-2Bu65P6x1nU4tTzSEabJHSEuhs3aV8DCUAxNg85gZ238R4FYjm-2FRTEBiZBZh-2BS5YaZot2Ac2-2BrdIIHcL9weT9E262NtKD9c1BMXhtf1-2FRFPCDczmugWvpP4afP-2BYGDJ14EkeT47yCA6fdNanyLYbMiSY1I1gV2ALpY-2Fd9AbxjSusMq9uyEe97wWE-3D"
+                    target="_blank"
+                    data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DEiAK_G5ih5bDnXOHFCn616ZUqsUcL-2FmMIbprnXH6lyJGKV6DWKaLGBjDc-2Bu65P6x1nU4tTzSEabJHSEuhs3aV8DCUAxNg85gZ238R4FYjm-2FRTEBiZBZh-2BS5YaZot2Ac2-2BrdIIHcL9weT9E262NtKD9c1BMXhtf1-2FRFPCDczmugWvpP4afP-2BYGDJ14EkeT47yCA6fdNanyLYbMiSY1I1gV2ALpY-2Fd9AbxjSusMq9uyEe97wWE-3D&amp;source=gmail&amp;ust=1733720139105000&amp;usg=AOvVaw0OK4-XhLd2BWYQLNPCnV-0">verifications
                     page</a>, where you will also find our <em>“Verifying credentials to prevent qualification fraud –
                     Guide for Employers”</em>.<br>
                 Regards<br>

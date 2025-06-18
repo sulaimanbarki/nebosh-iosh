@@ -83,8 +83,9 @@
                         <strong>NOT</strong> printed on the certificate. This is your date of birth, and we will advise
                         the verifier to check this against government issued ID. <strong>If you do not want NEBOSH to
                             disclose your date of birth, please do not authorise the request and <a
-                                href="#"
-                                target="_blank">contact
+                                href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSJil6gZlcdizVtiz8Uk9rhJQYqVjjtYFaESE-2Fi1oK471w-3D-3DTibT_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph10FCeckB59O4oJ8IJV7PjXN7I2OEk6rcQadcC7Z2n2WZGVfN2hgLz-2B-2Fe4aMJ-2FquUsx7v8KG4ZeVy1wsrEPcDt7Cho3fN9NjE5QjxTYlIerXy-2FSn-2Bfz9Z9fs-2BL0ElNALoZnB8BJBflZWxbJOgBCJDS-2BEgMrK3AlrhorYF9qshjf-2Fsd8iTcxPC0xDoEKjsZVd00-3D"
+                                target="_blank"
+                                data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSJil6gZlcdizVtiz8Uk9rhJQYqVjjtYFaESE-2Fi1oK471w-3D-3DTibT_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph10FCeckB59O4oJ8IJV7PjXN7I2OEk6rcQadcC7Z2n2WZGVfN2hgLz-2B-2Fe4aMJ-2FquUsx7v8KG4ZeVy1wsrEPcDt7Cho3fN9NjE5QjxTYlIerXy-2FSn-2Bfz9Z9fs-2BL0ElNALoZnB8BJBflZWxbJOgBCJDS-2BEgMrK3AlrhorYF9qshjf-2Fsd8iTcxPC0xDoEKjsZVd00-3D&amp;source=gmail&amp;ust=1733677762601000&amp;usg=AOvVaw14ll8qNxTS2SU0uPO9SeSP">contact
                                 NEBOSH directly</a></strong>.<br>
                         <br>
                     </span>
@@ -106,8 +107,9 @@
                         <br>
                         If you believe that there is suspicious activity around your NEBOSH certificate please report
                         this to NEBOSH using our “Report suspicious certificate activity form” on our <a
-                            href="#"
-                            target="_blank">verifications
+                            href="https://u30899780.ct.sendgrid.net/ls/click?upn=u001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DxHtM_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph10FCeckB59O4oJ8IJV7PjXwCcjbGaRfe99AS-2F0CRC0yt-2BWC1hzdglS1hGEUDHCzU9c90Io4ic-2FDI-2B4Z2ReGX3EFnD-2FyBB3KrYEBrNeHVRLPKTxSwugvRLNDxsSc2nePBhegaXWgqzoMa7gmd84bBa3gNBS75P5Zv1mTm4qFCKo-2BYac2N08515KEwEtGWUPm-2Bc-3D"
+                            target="_blank"
+                            data-saferedirecturl="https://www.google.com/url?q=https://u30899780.ct.sendgrid.net/ls/click?upn%3Du001.LJgHB4dEwwQCHgyprP1dqOKbD9lyM3BZ-2FnHGycM1WSLxjVZUkwV4-2BVAzwXaARc8fNMmvEFb3mpPcOY61Wqx8EQN1Fbqm3gq1-2Ffq89lnJbi0-3DxHtM_8IVwAjQrLPWYGpQot9UhXuh-2BP1qKNMtcl-2FfIBcqeph10FCeckB59O4oJ8IJV7PjXwCcjbGaRfe99AS-2F0CRC0yt-2BWC1hzdglS1hGEUDHCzU9c90Io4ic-2FDI-2B4Z2ReGX3EFnD-2FyBB3KrYEBrNeHVRLPKTxSwugvRLNDxsSc2nePBhegaXWgqzoMa7gmd84bBa3gNBS75P5Zv1mTm4qFCKo-2BYac2N08515KEwEtGWUPm-2Bc-3D&amp;source=gmail&amp;ust=1733677762601000&amp;usg=AOvVaw1StvA78CN1tU5n30LCjxFf">verifications
                             page</a>, where you will also find our <em>“Keeping your certificates safe – Guide for
                             learners”</em>.<br>
                         <br>
