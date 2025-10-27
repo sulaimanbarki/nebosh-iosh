@@ -1074,7 +1074,8 @@
                         <div class="nk-content-body d-xxl-flex align-content-xxl-center justify-content-xxl-center">
                             <div class="components-preview wide-xl">
                                 <div class="nk-block nk-block-xl">
-                                    <div class="nk-block-head" style="
+                                    <div class="nk-block-head"
+                                        style="
                         display: flex;
                         flex-direction: row;
                         justify-content: center;
@@ -1085,8 +1086,7 @@
                                         <div _ngcontent-ng-c3885976823=""
                                             style="width: 100%; display: flex; justify-content: center; flex-wrap: wrap;">
                                             <img _ngcontent-ng-c3885976823="" src="{{ asset('assets/NeboshLogo.jpg') }}"
-                                                style="width: 250px;">
-                                        </div>
+                                                style="width: 250px;"></div>
 
                                     </div>
                                     <div class="content-wrapper">
@@ -1095,8 +1095,7 @@
                                                 <div class="section-header">Details Requested</div>
                                                 <div class="d-flex gap-4">
                                                     <h5 class="mb-0">Certificate Name:</h5>
-                                                    <p>{{ $record->learner_name }}
-                                                        <!--</p-->
+                                                    <p>{{ $record->learner_name }}<!--</p-->
                                                     </p>
                                                 </div>
                                                 <div class="d-flex gap-4">
@@ -1107,8 +1106,7 @@
                                                 <div class="d-flex gap-4">
                                                     <h5 class="mb-0">Qualification:</h5>
                                                     <p>
-                                                        {{-- Nebosh International General Certificate in Occupational
-                                                        Safety and Health --}}
+                                                        {{-- Nebosh International General Certificate in Occupational Safety and Health --}}
                                                         {{ $certificate->name }}
                                                     </p>
                                                 </div>
@@ -1136,14 +1134,12 @@
                                                     <h5>Requested:</h5>
                                                     <p>
                                                         {{-- 29/01/2025 07:49 --}}
-                                                        {{ date('d/m/Y H:i', strtotime($certificateRequest->created_at))
-                                                        }}
+                                                        {{ date('d/m/Y H:i', strtotime($certificateRequest->created_at)) }}
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div
-                                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                                             <div class="verification-box tobe-hide">
                                                 <p>
                                                     If you consent to this verification, please enter
@@ -1161,15 +1157,12 @@
                                                 <p>
                                                     Thank you for authorising this request.
                                                     <br> <br>
-                                                    An email has been sent to the requesting party containing
-                                                    confirmation of your certification.
+                                                    An email has been sent to the requesting party containing confirmation of your certification.
                                                 </p>
                                             </div>
                                         </div>
-                                        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;"
-                                            class="tobe-hide">
-                                            <div
-                                                style="max-width: 500px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 30px;">
+                                        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;" class="tobe-hide">
+                                            <div style="max-width: 500px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 30px;">
 
 
                                                 <label class="inp">
@@ -1178,18 +1171,23 @@
                                                     <span class="focus-bg"></span>
                                                 </label>
                                                 <div class="action-buttons">
-                                                    <a href="#" class="btn btn-dim btn-light reject-request" style="
+                                                    <a href="#" class="btn btn-dim btn-light reject-request"
+                                                        style="
                                 color: red;
                                 box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                              " onmouseover="this.style.backgroundColor='rgba(255, 0, 0, 0.1)'"
+                              "
+                                                        onmouseover="this.style.backgroundColor='rgba(255, 0, 0, 0.1)'"
                                                         onmouseout="this.style.backgroundColor=''">
                                                         {{-- <em class="icon ni ni-cross-circle-fill"></em> --}}
                                                         <span>Deny</span>
                                                     </a>
-                                                    <a class="btn btn-dim btn-light eg-swal-default" style="
+                                                    <a class="btn btn-dim btn-light eg-swal-default"
+                                                        style="
                                 color: green;
                                 box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                              " id="submit-button" onmouseover="this.style.backgroundColor='rgba(0, 128, 0, 0.1)'"
+                              "
+                                                        id="submit-button"
+                                                        onmouseover="this.style.backgroundColor='rgba(0, 128, 0, 0.1)'"
                                                         onmouseout="this.style.backgroundColor=''">
                                                         {{-- <em class="icon ni ni-check"></em> --}}
                                                         <span>Accept</span>
@@ -1334,57 +1332,9 @@
         }
     </script>
 
-    {!! NoCaptcha::renderJs() !!}
-    <!-- Modal Overlay -->
-    <div id="recaptcha-modal" class="recaptcha-modal">
-        <div class="recaptcha-content">
-            {!! NoCaptcha::display(['data-callback' => 'onRecaptchaSuccess']) !!}
-        </div>
-    </div>
-
-    <script>
-        // Callback function executed upon successful reCAPTCHA verification
-        function onRecaptchaSuccess() {
-            // Hide the reCAPTCHA modal
-            document.getElementById('recaptcha-modal').style.display = 'none';
-            // Display the protected content
-            document.querySelector('.components-preview').style.display = 'block';
-        }
-    </script>
-
-    <style>
-        /* Modal overlay */
-        .recaptcha-modal {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        /* Modal content */
-        .recaptcha-content {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            text-align: center;
-        }
-
-        /* Hidden content */
-        .components-preview {
-            display: none;
-        }
-    </style>
 
 
 
-</body>
-<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
 
 </html>
