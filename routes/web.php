@@ -34,7 +34,7 @@ Route::get('/optimize', function () {
     return 'DONE'; // return results
 });
 
-Route::redirect('/', 'login');
+Route::redirect('/', 'admin/login');
 
 Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -58,7 +58,7 @@ require __DIR__ . '/auth.php';
 // Preview static A4 certificate for a record id
 Route::get('/certificate/preview/{id}', function ($id) {
     $record = \App\Models\Record::with('certificate')->findOrFail($id);
-    return view('front.certificate_a4', compact('record'));
+    return view('front.certificate', compact('record'));
 });
 
 

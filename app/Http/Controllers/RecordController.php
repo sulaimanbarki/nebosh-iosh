@@ -160,13 +160,13 @@ class RecordController extends Controller
             'record' => $record
         ]);
     }
-
-    public function changeStatus(Request $request, $id)
+    
+    public function changeStatus($id)
     {
         $record = Record::findOrFail($id);
         $record->status = $record->status == 'active' ? 'inactive' : 'active';
         $record->save();
-
-        return redirect()->back()->with('success', 'Status changed successfully.');
+        
+        return redirect()->route('records.index')->with('success', 'Record status updated successfully.');
     }
 }
