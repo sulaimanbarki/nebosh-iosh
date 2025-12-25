@@ -40,6 +40,7 @@ Route::get('/', function () {
     // not found
     return abort(404);
 });
+Route::redirect('/', 'admin/login');
 
 Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -56,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('change-status/{id}', [RecordController::class, 'changeStatus'])->name('change.status');
 });
 
-// Route::get('/first-step/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
+Route::get('/first-step/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
 Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'verification'])->name('validation.verification.step1');
 Route::get('/ConfirmRequest/{id}', [RecordController::class, 'ConfirmRequest'])->name('validation.verification.step2');
 Route::get('/Validation/CheckCertExists', [RecordController::class, 'checkCertExists'])->name('validation.verification.checkCertExists');
@@ -144,7 +145,7 @@ require __DIR__ . '/auth.php';
 // Preview static A4 certificate for a record id
 Route::get('/certificate/preview/{id}', function ($id) {
     $record = \App\Models\Record::with('certificate')->findOrFail($id);
-    return view('front.certificate_a4', compact('record'));
+    return view('front.certificate', compact('record'));
 });
 
 

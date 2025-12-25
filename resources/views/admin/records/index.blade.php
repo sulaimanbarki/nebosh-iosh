@@ -19,8 +19,8 @@
                     <div class="card-header">
                         <form class="">
                             <div class="form-row align-items-center">
-                                <div class="col-sm-3 my-1">
-                                    <label class="sr-only" for="inlineFormInputName">Name</label>
+
+
                                     <input type="text" class="form-control" name="search" id="inlineFormInputName"
                                         placeholder="search...">
                                 </div>
@@ -59,31 +59,37 @@
                                         <td>{{ $record->certificate->name }}</td>
                                         <td>{{ $record->qualification_grade == 'CREDIT' ? 'CREDIT' : 'N/A' }}</td>
                                         <td>
-                                            <a href="{{ $record->link }}"
+                                            {{-- <a href="{{ $record->link }}"
                                                 target="_blank">
                                                 <img src="/images/{{ $record->registration_no }}.png" alt=""
-                                                    width="50">
+                                                    width="50"> --}}
+                                        <td class="align-middle" style="width:50px; padding:5px;">
+                                            <a href="{{ route('validation.details', $record->registration_no) }}" target="_blank" rel="noopener">
+                                                <img src="/images/{{ $record->registration_no }}.png" alt="QR code for {{ $record->registration_no }}" style="display:block; width:50px; height:auto;">
                                             </a>
                                         </td>
                                         <td>
-                                            <form style="display: inline !important;"
-                                                action="{{ route('records.destroy', $record->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
-                                            <a href="{{ route('records.edit', $record->id) }}"
-                                                class="btn btn-primary btn-sm">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+                                            <div class="d-flex align-items-center">
+                                                <form class="m-0 delete-form" action="{{ route('records.destroy', $record->id) }}" method="POST" id="delete-form-{{ $record->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="button" class="btn btn-danger btn-sm mx-1 mt-3 delete-btn" data-id="{{ $record->id }}" data-name="{{ $record->learner_name }}" aria-label="Delete record {{ $record->id }}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
 
-                                            {{-- show --}}
-                                            <a href="{{ route('records.show', $record->id) }}"
-                                                class="btn btn-success btn-sm">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
+                                                <a href="{{ route('records.edit', $record->id) }}" class="btn btn-primary mt-3 btn-sm mx-1" aria-label="Edit record {{ $record->id }}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+
+                                                <a href="{{ url('certificate/preview/'.$record->id) }}" class="btn btn-outline-secondary mt-3 btn-sm mx-1" target="_blank" rel="noopener" aria-label="Open PDF for record {{ $record->id }}">
+                                                    <i class="fas fa-file-pdf"></i>
+                                                </a>
+
+                                                <a href="{{ route('records.show', $record->id) }}" class="btn btn-success mt-3 btn-sm mx-1" aria-label="View record {{ $record->id }}">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -108,4 +114,74 @@
     </div>
     <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
+
+@push('scripts')
+<script>
+    // SweetAlert for delete confirmation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle delete buttons
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const recordId = this.getAttribute('data-id');
+                const recordName = this.getAttribute('data-name');
+                const form = document.getElementById('delete-form-' + recordId);
+                
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: `You are about to delete the record for "${recordName}". This action cannot be undone!`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Show loading state
+                        Swal.fire({
+                            title: 'Deleting...',
+                            text: 'Please wait while we delete the record.',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            willOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+                        
+                        // Submit the form
+                        form.submit();
+                    }
+                });
+            });
+        });
+
+        // Show success message if session has success message
+        @if(session('success'))
+            Swal.fire({
+                title: 'Success!',
+                text: '{{ session('success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 3000,
+                timerProgressBar: true
+            });
+        @endif
+
+        // Show error message if session has error message
+        @if(session('error'))
+            Swal.fire({
+                title: 'Error!',
+                text: '{{ session('error') }}',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        @endif
+    });
+</script>
+@endpush
 @endsection
