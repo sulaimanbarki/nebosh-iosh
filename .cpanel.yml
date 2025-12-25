@@ -1,0 +1,5 @@
+deployment:
+  tasks:
+    - export COMPOSER_HOME=/home/<cpanel-user>/.composer
+    - '/opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader'
+    - 'npm install --production'

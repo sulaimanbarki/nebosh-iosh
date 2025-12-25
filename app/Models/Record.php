@@ -19,7 +19,9 @@ class Record extends Model
         'certificate_log_number',
         'link',
         'registration_no',
-        'qualification_grade'
+        'qualification_grade',
+        'email',
+        'date_of_birth'
     ];
 
     protected $dates = [

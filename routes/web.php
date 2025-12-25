@@ -9,6 +9,7 @@ use Spatie\Backup\Tasks\Backup\BackupJob;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CertificatesController;
+use Illuminate\Http\Request;
 use Spatie\Backup\BackupDestination\BackupDestinationFactory;
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,11 @@ Route::get('/optimize', function () {
     return 'DONE'; // return results
 });
 
+// Route::redirect('/', 'login');
+Route::get('/', function () {
+    // not found
+    return abort(404);
+});
 Route::redirect('/', 'admin/login');
 
 Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -45,13 +51,94 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('users', UsersController::class);
     Route::resource('plans', PlansController::class);
-    // characters  
+    // characters
     Route::resource('certificates', CertificatesController::class);
     Route::resource('records', RecordController::class);
     Route::get('change-status/{id}', [RecordController::class, 'changeStatus'])->name('change.status');
 });
 
-Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
+Route::get('/first-step/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
+Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'verification'])->name('validation.verification.step1');
+Route::get('/ConfirmRequest/{id}', [RecordController::class, 'ConfirmRequest'])->name('validation.verification.step2');
+Route::get('/Validation/CheckCertExists', [RecordController::class, 'checkCertExists'])->name('validation.verification.checkCertExists');
+// Route::get('/Validation/CheckCertExists', function () {
+//     return response()->json([
+//         'failedCaptcha' => false,
+//         'exists' => true,
+//         'void' => false,
+//         'certificateKey' => '1PSC1JGI1TK85RB4E70VIAAG',
+//         'errorMessage' => null,
+//         'learnerName' => 'Nadeem Akram',
+//         'certMasterLog' => '00685517/1305342',
+//         'certDate' => '2022-08-09'
+//     ], 200);
+// });
+// http://127.0.0.1:8000/Validation/StoreCaptcha return 200
+// {
+//     "success": true,
+//     "token": "zRgR86So0SNRlOUvp5plbA==|xISIkiom32dJRiB93ni8NlFVs6Q5DvETNBxXoMWVUSpmRYgaAO03ECtzBwbTJxQ+VEWxBHRo8FcOUyyrbea6MIpGMmgWnmhCyA97hYcq0tw=",
+//     "expires": null
+// }
+
+// {"success":true,"expires":"2024-12-07T05:54:13.7774237+00:00"}
+
+// {
+//     "success": true,
+//     "token": "Njkxptz/g9I8eO+4NZ7+cA==|JCoOzhcRrUa1apAFd6M8Mmu3JrgcvpnI21vB7bkgzHV5EJd93N7bar0oZpxM+1be4peNNuZQ1mxq//LKAFMDLWdV7IAqIQTlwfsAopA8xAI=",
+//     "expires": null
+// }
+Route::get('/Validation/StoreCaptcha', function (Request $request) {
+    // dd($request->all());
+    return response()->json([
+        'success' => true,
+        'token' => 'Njkxptz/g9I8eO+4NZ7+cA==|JCoOzhcRrUa1apAFd6M8Mmu3JrgcvpnI21vB7bkgzHV5EJd93N7bar0oZpxM+1be4peNNuZQ1mxq//LKAFMDLWdV7IAqIQTlwfsAopA8xAI=',
+        'expires' => null
+    ], 200);
+});
+
+// http://127.0.0.1:8000/Validation/CheckCertExists
+// {
+//     "failedCaptcha": false,
+//     "exists": true,
+//     "void": false,
+//     "certificateKey": "1PSC1JGI1TK85RB4E70VIAAG",
+//     "errorMessage": null,
+//     "learnerName": "Nadeem Akram",
+//     "certMasterLog": "00685517/1305342",
+//     "certDate": "2022-08-09"
+// }
+
+// http://127.0.0.1:8000/Validation/RequestValidation
+// {
+//     "failedCaptcha": false,
+//     "certificateKey": "U420P5AW21UOIGD36XSTE6RN",
+//     "exists": true,
+//     "requestSentToOwner": true,
+//     "certificateCancelled": false,
+//     "errorMessage": null
+// }
+
+Route::get('/Validation/RequestValidation', [RecordController::class, 'validationRequest'])->name('validation.verification.validationRequest');
+// Validation/CheckValidation
+Route::get('/Validation/CheckValidation', [RecordController::class, 'checkValidation'])->name('validation.verification.checkValidation');
+// Validation/CompleteRequest
+Route::get('/Validation/CompleteRequest', [RecordController::class, 'completeRequest'])->name('validation.verification.completeRequest');
+
+
+// Validation/ValidateCaptcha
+// {"success":true,"expires":"2024-12-04T22:24:28.4323629+00:00"}
+Route::get('/Validation/ValidateCaptcha', function () {
+    return response()->json([
+        'success' => false,
+        // 'expires' => '2024-12-04T22:24:28.4323629+00:00'
+        // two days from now
+        'expires' => null
+    ], 200);
+});
+
+Route::get('/test-captcha', function () {
+    return view('admin.users.test');
+});
 
 require __DIR__ . '/auth.php';
 
