@@ -181,6 +181,7 @@ class RecordController extends Controller
 
         return redirect()->route('validation.verification.step1', $registration_no);
 
+        $record = Record::with('certificate')->where('registration_no', $registration_no)->firstOrFail();
         return view('front.certificate', [
             'record' => $record
         ]);
