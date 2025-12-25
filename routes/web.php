@@ -55,6 +55,12 @@ Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'd
 
 require __DIR__ . '/auth.php';
 
+// Preview static A4 certificate for a record id
+Route::get('/certificate/preview/{id}', function ($id) {
+    $record = \App\Models\Record::with('certificate')->findOrFail($id);
+    return view('front.certificate_a4', compact('record'));
+});
+
 
 Route::get('/backupdb', function () {
     try {

@@ -1,0 +1,28 @@
+/* A4 size certificate CSS */
+/* @page { size: A4; margin: 0; }
+body { margin: 0; font-family: 'Times New Roman', Times, serif; color: #0b2540; }
+.certificate { width: 210mm; height: 297mm; box-sizing: border-box; padding: 24mm; background: #ffffff; }
+.cert-header { text-align: center; margin-bottom: 8mm; }
+.cert-logo { max-height: 60mm; display: inline-block; }
+.cert-subtitle { text-align: center; font-size: 18px; margin: 6mm 0; font-weight: 700; }
+.cert-line { text-align: center; margin: 4mm 0; font-size: 12px; }
+.cert-name { text-align: center; font-size: 34px; margin: 6mm 0; font-weight: 700; }
+.cert-award { text-align: center; margin-top: 4mm; font-size: 14px; }
+.cert-date { text-align: center; font-size: 16px; margin: 6mm 0; }
+.cert-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 12mm; }
+.meta-left { text-align: left; }
+.sqa { font-size: 12px; margin: 0 0 6px 0; }
+.master-log { font-size: 12px; margin: 0; }
+.cert-qrcode { max-width: 80px; }
+.cert-footer { position: absolute; left: 24mm; right: 24mm; bottom: 24mm; }
+.signatures { display: flex; justify-content: space-between; gap: 20mm; }
+.sign { width: 60mm; text-align: center; }
+.sign-line { border-top: 1px solid #000; height: 20px; margin-bottom: 6px; }
+.sign-name { font-size: 12px; }
+.sign-title { font-size: 11px; color: #333; } */
+
+/* Print friendly adjustments */
+/* @media print {
+    body { background: #fff; }
+    .certificate { box-shadow: none; }
+} */
