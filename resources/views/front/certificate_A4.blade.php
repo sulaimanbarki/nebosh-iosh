@@ -27,7 +27,7 @@
         .certificate {
             position: relative;
             width: 210mm;
-            height: 297mm;
+            height: 320mm;
             background: #ffffff;
             /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
             font-family: "Arial", sans-serif;
@@ -35,6 +35,53 @@
             color: #022258;
             overflow: hidden;
             /* margin-right: 105px; */
+        }
+
+        .signatures {
+            position: absolute;
+            bottom: 50mm;
+            /* Adjust based on PDF layout */
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20mm;
+            box-sizing: border-box;
+        }
+
+        .sign-left {
+            text-align: left;
+            width: 55%;
+            margin-left: -17%;
+             color: #022258;
+        }
+
+        .sign-right {
+            text-align: center;
+            width: 45%;
+        }
+
+        .sign-name {
+            /* font-weight: bold; */
+            margin-bottom: 5px;
+        }
+
+        .sign-role {
+            font-size: 12pt;
+            color: #022258;
+            margin-bottom: 15px;
+        }
+
+        .signature-img {
+            width: 170px;
+            /* Adjust based on your image */
+            height: 130px;
+            margin-top: 9px;
+        }
+
+        .signature-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* --- THE HEADER STYLE --- */
@@ -96,7 +143,7 @@
 
         .cert-title {
             font-size: 27.61pt;
-            font-weight:550;
+            font-weight: 550;
             margin-left: -20px;
             margin-top: 13mm;
             /* Fit inside A4 while accounting for .cert-content padding (20mm each side) */
@@ -119,7 +166,7 @@
             margin-left: -20px;
         }
 
-        .date{
+        .date {
             display: block;
             font-size: 20.5pt;
             /* font-weight: bold; */
@@ -152,23 +199,8 @@
             page-break-before: always;
         }
 
-        /* Signature Section */
-        .signatures {
-            margin-top: 1mm;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20mm;
-        }
 
-        .sign-box {
-            text-align: center;
-            width: 60mm;
-        }
 
-        /* .sign-line {
-            border-top: 1px solid #002c77;
-            margin-bottom: 2mm;
-        } */
 
         .footer-info {
             position: absolute;
@@ -243,7 +275,10 @@
             $displayYear = null;
             if (isset($record->date_awarded) && $record->date_awarded) {
                 $displayYear = date('Y', strtotime($record->date_awarded));
-            } elseif (isset($record->certificate_log_number) && preg_match('/(20\d{2})/', $record->certificate_log_number, $m)) {
+            } elseif (
+                isset($record->certificate_log_number) &&
+                preg_match('/(20\d{2})/', $record->certificate_log_number, $m)
+            ) {
                 $displayYear = $m[1];
             }
             // show on footer for years 2021-2024 or when year is unknown
@@ -253,7 +288,7 @@
             $showWatermark = !is_null($displayYear) && intval($displayYear) >= 2025;
         @endphp
 
-        @if($showWatermark)
+        @if ($showWatermark)
             <div id="watermark-layer"></div>
         @endif
         <div class="header-container">
@@ -278,37 +313,44 @@
             </div>
         </div>
 
-        <div class="signatures">
-            <div class="sign-box">
-                <span style=" font-size: 16pt; margin-bottom: 5px;">Rob Hull</span><br>
-                <span style=" font-size: 16pt; margin-bottom: 5px; margin-left: 30px;">Chair</span>
-                <br>
-                <br>
-                {{-- <div class="sign-line"></div> --}}
-                {{-- <div style="font-style: italic; font-size: 20pt; margin-bottom: 50px;">Dee Arp</div> --}}
-                {{-- <div class="sign-line"></div> --}}
-                <span style=" font-size: 16pt; margin-bottom: -50px; margin-left: 15px;">Dee Arp</span><br>
-                <span style=" font-size: 16pt; margin-bottom: -50px; margin-left: -80px;">Accountable Officer</span>
-                {{-- <strong>Rob Hull</strong><br>Chair --}}
+        <!-- Updated Signatures Section -->
+        <div class="signatures" style="margin-bottom: 120px">
+            <div class="sign-left">
+                <div class="signature-container">
+                    <div class="sign-name" style="font-size:18pt;margin-left: 50px;">Rob Hull</div>
+                    <div class="sign-role" style="margin-left: 80px;font-size:18pt;">Chair</div>
+                    <div style="margin-top: 10px;"></div> <!-- Spacer for visual alignment -->
+                    <div class="sign-name" style="margin-left: 80px; font-size: 18pt;">Dee Arp</div>
+                    <div class="sign-role" style="font-size:16pt">Accountable Officer</div>
+                </div>
             </div>
-            {{-- <div class="sign-box">
-                <div style="font-style: italic; font-size: 20pt; margin-bottom: 5px;">Dee Arp</div>
-                <div class="sign-line"></div>
-                <strong>Dee Arp</strong><br>Accountable Officer
-            </div> --}}
+
+            <div class="sign-right">
+                <div class="signature-container" >
+                    <img src="{{ asset('images/signature.png') }}" alt="Signatures" class="signature-img" style="margin-right: 130mm">
+                    {{-- <div style="margin-top: 5px; font-size: 11pt; color: #333;"></div> --}}
+                </div>
+            </div>
         </div>
+
 
         <div class="footer-info">
 
-            @if($showOnFooter)
+            @if ($showOnFooter)
                 <div class="log_num" style="font-size: 14px; margin-left: 0px;">
                     Master log Certificate No: {{ $record->certificate_log_number ?? '' }}
                 </div>
                 <br><br>
             @endif
 
-            <div class="SQA_num">
-                <strong>SQA Reference: </strong>{{ $record->sqa_reference }}
+            <div class="SQA_num" style="margin-bottom: -00px">
+                <div>
+                    <strong>SQA Reference: </strong>{{ $record->sqa_reference }}
+                </div>
+                <br>
+                <div class="SQA_image">
+                    <img src="{{ asset('images/SQA_logo.png') }}" alt="SQA Logo" style="width:100px; margin-bottom: -60px;">
+                </div>
             </div>
         </div>
 
@@ -333,7 +375,7 @@
         </div>
     </div>
 
-    @if($showOnMasterPage)
+    @if ($showOnMasterPage)
         <div class="master section_B" style="page-break-before: always;">
             <div style="font-size: 18px; position: absolute; left: 50%; transform: translateX(-50%); bottom: 24mm;">
                 Master log Certificate No: {{ $record->certificate_log_number ?? '' }}
@@ -344,7 +386,7 @@
 
 
 
-    @if($showWatermark)
+    @if ($showWatermark)
         <script>
             document.addEventListener("DOMContentLoaded", function() {
 
