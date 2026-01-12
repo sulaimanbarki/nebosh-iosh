@@ -60,7 +60,10 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/first-step/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
 Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'verification'])->name('validation.verification.step1');
 Route::get('/ConfirmRequest/{id}', [RecordController::class, 'ConfirmRequest'])->name('validation.verification.step2');
-Route::get('/Validation/CheckCertExists', [RecordController::class, 'checkCertExists'])->name('validation.verification.checkCertExists');
+    Route::get('/Validation/CheckCertExists', [RecordController::class, 'checkCertExists'])->name('validation.verification.checkCertExists');
+    Route::redirect('/nebosh_record', '/nebosh_records');
+    Route::resource('nebosh_records', \App\Http\Controllers\NeboshRecordController::class);
+    Route::get('/nebosh/certificate/{id}', [\App\Http\Controllers\NeboshRecordController::class, 'show'])->name('nebosh.certificate');
 // Route::get('/Validation/CheckCertExists', function () {
 //     return response()->json([
 //         'failedCaptcha' => false,

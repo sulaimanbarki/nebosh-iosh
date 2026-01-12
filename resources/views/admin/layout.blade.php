@@ -144,6 +144,17 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('nebosh_records.index') }}"
+                                class="nav-link
+                            @if (Request::is('nebosh_records*')) active @endif
+                            ">
+                                <i class="nav-icon fas fa-award"></i>
+                                <p>
+                                    Nebosh Records
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/backupdb"
                                 class="nav-link
                             @if (Request::is('backupdb')) active @endif

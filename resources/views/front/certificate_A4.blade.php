@@ -420,6 +420,22 @@
             top: 190mm;
         }
 
+         .certificate.layout-pre-2025 .sign-name{
+            /* Example: Change font size for Name */
+            font-size: 2pt;
+            /* margin-right: 100px;
+            margin-top: 50px; Custom margin for pre-2025 signatures */
+            top: 190mm;
+        }
+
+         .certificate.layout-pre-2025 .sign-name{
+            /* Example: Change font size for Name */
+            font-size: 2pt;
+            /* margin-right: 100px;
+            margin-top: 50px; Custom margin for pre-2025 signatures */
+            top: 190mm;
+        }
+
     </style>
 </head>
 
@@ -496,7 +512,7 @@
         </div>
 
         <!-- Updated Signatures Section -->
-        <div class="signatures" style="margin-bottom: 0px">
+        <div class="signatures">
             <div class="sign-left">
                 <div class="signature-container">
                     <div class="sign-name" style="font-size:16pt;margin-left: 50px;">Rob Hull</div>
