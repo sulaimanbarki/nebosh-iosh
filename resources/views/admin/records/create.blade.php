@@ -82,7 +82,7 @@
                                     {{-- <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" required> --}}
 
                                     <input type="text" class="form-control" id="date_of_birth"
-                                        placeholder="Enter date of birth" name="date_of_birth" placeholder="DD/MM/YYYY" required>
+                                        placeholder="DD/MM/YYYY" name="date_of_birth" required value="{{ old('date_of_birth') }}">
 
                                     {{-- if error message --}}
                                     @error('date_of_birth')

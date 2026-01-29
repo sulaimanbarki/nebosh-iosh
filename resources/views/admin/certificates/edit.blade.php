@@ -6,8 +6,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item">Certificates</li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('certificates.index') }}">Certificates</a></li>
                 <li class="breadcrumb-item active">Edit Certificate</li>
             </ol>
         </div><!-- /.col -->
@@ -34,6 +34,16 @@
 
                                     {{-- if error message --}}
                                     @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reference">Reference No</label>
+                                    <input type="text" value="{{ old('reference') ?? $certificate->reference }}" class="form-control" id="reference" placeholder="Enter reference" name="reference">
+
+                                    {{-- if error message --}}
+                                    @error('reference')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

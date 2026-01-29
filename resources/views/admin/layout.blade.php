@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet"
-        href="{{ asset('adminlte/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css') }}">
+        href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet"
         href="{{ asset('adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
@@ -86,7 +86,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name  }}</a>
+                        <a href="#" class="d-block">{{ Auth::user()?->name ?? 'Guest' }}</a>
                     </div>
                 </div>
 
@@ -135,7 +135,7 @@
                         <li class="nav-item">
                             <a href="/certificates"
                                 class="nav-link
-                            @if (Request::is('certificates')) active @endif
+                            @if (Request::is('certificates*')) active @endif
                             ">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
@@ -144,7 +144,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('nebosh_records.index') }}"
+                            <a href="/nebosh_records"
                                 class="nav-link
                             @if (Request::is('nebosh_records*')) active @endif
                             ">
@@ -252,7 +252,9 @@
     <!-- AdminLTE for demo purposes -->
     {{-- <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    @if(Request::is('dashboard'))
     <script src="{{ asset('adminlte/dist/js/pages/dashboard.js') }}"></script>
+    @endif
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     

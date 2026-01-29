@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CertificatesController extends Controller
@@ -15,9 +14,8 @@ class CertificatesController extends Controller
      */
     public function index()
     {
-        return view('admin.certificates.index', [
-            'certificates' => Certificate::all()
-        ]);
+        $certificates = Certificate::all();
+        return view('admin.certificates.index', compact('certificates'));
     }
 
     /**
@@ -27,7 +25,6 @@ class CertificatesController extends Controller
      */
     public function create()
     {
-        //
         return view('admin.certificates.create');
     }
 
@@ -40,16 +37,17 @@ class CertificatesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'reference' => 'required'
+            'name' => 'required|string|max:255',
+            'reference' => 'nullable|string|max:255',
         ]);
 
         Certificate::create([
             'name' => $request->name,
-            'reference' => $request->reference
+            'reference' => $request->reference,
+            'status' => $request->has('status') ? 1 : 0,
         ]);
 
-        return redirect()->route('certificates.index');
+        return redirect()->route('certificates.index')->with('success', 'Certificate created successfully.');
     }
 
     /**
@@ -71,9 +69,8 @@ class CertificatesController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.certificates.edit', [
-            'certificate' => Certificate::find($id)
-        ]);
+        $certificate = Certificate::findOrFail($id);
+        return view('admin.certificates.edit', compact('certificate'));
     }
 
     /**
@@ -85,18 +82,19 @@ class CertificatesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $certificate = Certificate::findOrFail($id);
-
         $request->validate([
-            'name' => 'required',
-            'reference' => ''
+            'name' => 'required|string|max:255',
+            'reference' => 'nullable|string|max:255',
         ]);
 
-        $certificate->name = $request->name;
-        $certificate->reference = $request->reference;
-        $certificate->save();
+        $certificate = Certificate::findOrFail($id);
+        $certificate->update([
+            'name' => $request->name,
+            'reference' => $request->reference,
+            'status' => $request->has('status') ? 1 : 0,
+        ]);
 
-        return redirect()->route('certificates.index');
+        return redirect()->route('certificates.index')->with('success', 'Certificate updated successfully.');
     }
 
     /**
@@ -107,8 +105,9 @@ class CertificatesController extends Controller
      */
     public function destroy($id)
     {
-        // Character::destroy($id);
-        Certificate::destroy($id);
-        return redirect()->route('certificates.index');
+        $certificate = Certificate::findOrFail($id);
+        $certificate->delete();
+
+        return redirect()->route('certificates.index')->with('success', 'Certificate deleted successfully.');
     }
 }

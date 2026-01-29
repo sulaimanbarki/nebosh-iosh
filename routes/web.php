@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\PlansController;
+// use App\Http\Controllers\PlansController;
 use App\Http\Controllers\UsersController;
 use Spatie\Backup\Tasks\Backup\BackupJob;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CertificatesController;
+use App\Http\Controllers\CertificatePdfController;
 use Illuminate\Http\Request;
 use Spatie\Backup\BackupDestination\BackupDestinationFactory;
 /*
@@ -36,10 +37,6 @@ Route::get('/optimize', function () {
 });
 
 // Route::redirect('/', 'login');
-Route::get('/', function () {
-    // not found
-    return abort(404);
-});
 Route::redirect('/', 'admin/login');
 
 Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -50,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('users', UsersController::class);
-    Route::resource('plans', PlansController::class);
+    // Route::resource('plans', PlansController::class);
     // characters
     Route::resource('certificates', CertificatesController::class);
     Route::resource('records', RecordController::class);
@@ -59,11 +56,18 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/first-step/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
 Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'verification'])->name('validation.verification.step1');
+Route::get('/Validation/Certificate/{certificate_number}', [RecordController::class, 'showCertificateVerification'])->name('validation.certificate.show');
+Route::get('/verify', [RecordController::class, 'verifyByReference'])->name('validation.verify');
 Route::get('/ConfirmRequest/{id}', [RecordController::class, 'ConfirmRequest'])->name('validation.verification.step2');
     Route::get('/Validation/CheckCertExists', [RecordController::class, 'checkCertExists'])->name('validation.verification.checkCertExists');
-    Route::redirect('/nebosh_record', '/nebosh_records');
+    
+    
     Route::resource('nebosh_records', \App\Http\Controllers\NeboshRecordController::class);
     Route::get('/nebosh/certificate/{id}', [\App\Http\Controllers\NeboshRecordController::class, 'show'])->name('nebosh.certificate');
+    Route::get('/nebosh/certificate/{id}/download', [\App\Http\Controllers\CertificatePdfController::class, 'download'])->name('certificate.download');
+
+    
+
 // Route::get('/Validation/CheckCertExists', function () {
 //     return response()->json([
 //         'failedCaptcha' => false,
@@ -200,4 +204,5 @@ Route::get('/backupdb', function () {
         return response()->json(['error' => $e->getMessage()], 500);
     }
 });
+
 

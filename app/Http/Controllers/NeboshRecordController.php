@@ -12,10 +12,23 @@ class NeboshRecordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $records = NeboshRecord::latest()->paginate(10);
-        return view('admin.nebosh_records.index', compact('records'));
+        $search = $request->input('search');
+
+        $records = NeboshRecord::query()
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('student_name', 'like', "%{$search}%")
+                        ->orWhere('course_name', 'like', "%{$search}%")
+                        ->orWhere('certificate_number', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->appends(['search' => $search]);
+
+        return view('admin.nebosh_records.index', compact('records', 'search'));
     }
 
     /**
@@ -118,7 +131,7 @@ class NeboshRecordController extends Controller
         $neboshRecord = NeboshRecord::findOrFail($id);
         $neboshRecord->delete();
 
-        return redirect()->route('nebosh_records.index')
+        return redirect()->route(route: 'nebosh_records.index')
             ->with('success', 'Record deleted successfully');
     }
 }

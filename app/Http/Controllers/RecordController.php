@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Record;
 use App\Models\Certificate;
+use App\Models\NeboshRecord;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -65,11 +66,16 @@ class RecordController extends Controller
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
             'certificate_log_number' => 'required',
-            'date_of_birth' => 'required|date_format:d/m/Y',
+            'date_of_birth' => 'required',
             'email' => 'required'
         ]);
 
-        $date_of_birth = Carbon::createFromFormat('d/m/Y', $request->date_of_birth);
+        $date_of_birth = $this->parseDateOfBirth($request->date_of_birth);
+        if (!$date_of_birth) {
+            return back()
+                ->withErrors(['date_of_birth' => 'Please use DD/MM/YYYY (e.g. 20/01/2026).'])
+                ->withInput();
+        }
 
         $registration_code = bin2hex(random_bytes(12));
         $registration_code = strtoupper($registration_code);
@@ -140,11 +146,16 @@ class RecordController extends Controller
             'sqa_reference' => 'required',
             'date_awarded' => 'required',
             'certificate_log_number' => 'required',
-            'date_of_birth' => 'required|date_format:d/m/Y',
+            'date_of_birth' => 'required',
             'email' => 'required'
         ]);
 
-        $date_of_birth = Carbon::createFromFormat('d/m/Y', $request->date_of_birth);
+        $date_of_birth = $this->parseDateOfBirth($request->date_of_birth);
+        if (!$date_of_birth) {
+            return back()
+                ->withErrors(['date_of_birth' => 'Please use DD/MM/YYYY (e.g. 20/01/2026).'])
+                ->withInput();
+        }
 
         $record->update([
             'learner_name' => $request->learner_name,
@@ -159,6 +170,24 @@ class RecordController extends Controller
         ]);
 
         return redirect()->route('records.index')->with('success', 'Record updated successfully.');
+    }
+
+    /**
+     * Parse various accepted date formats for DOB input.
+     */
+    private function parseDateOfBirth(string $value): ?Carbon
+    {
+        $formats = ['d/m/Y', 'd-m-Y', 'Y-m-d'];
+
+        foreach ($formats as $format) {
+            try {
+                return Carbon::createFromFormat($format, $value);
+            } catch (\Exception $e) {
+                // Try next format
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -392,5 +421,42 @@ class RecordController extends Controller
             'certificate_log_number' => $record->certificate_log_number,
             'date_awarded' => $record->date_awarded
         ], 200);
+    }
+
+    /**
+     * Show certificate verification using query parameter
+     */
+    public function verifyByReference(Request $request)
+    {
+        $reference = $request->query('reference');
+        
+        if (!$reference) {
+            abort(404, 'Reference number is required');
+        }
+
+        return $this->showCertificateVerification($reference);
+    }
+
+    /**
+     * Show certificate verification using certificate number
+     * This method displays the verification/show.blade.php view
+     */
+    public function showCertificateVerification($certificate_number)
+    {
+        // Find the NeboshRecord by certificate_number
+        $neboshRecord = NeboshRecord::where('certificate_number', $certificate_number)->firstOrFail();
+        
+        // Create a certificate object that matches the view's expectations
+        $certificate = (object) [
+            'id' => $neboshRecord->id,
+            'issuer' => 'IOSH (Institution of Occupational Safety and Health)',
+            'candidate_name' => $neboshRecord->student_name,
+            'issue_date' => $neboshRecord->issue_date
+        ];
+        
+        // Return the verification show view with certificate data
+        return view('verification.show', [
+            'certificate' => $certificate
+        ]);
     }
 }

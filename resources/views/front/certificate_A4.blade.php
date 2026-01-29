@@ -395,44 +395,36 @@
 
         }
 
-        /* ===== CUSTOM STYLES FOR PRE-2025 CERTIFICATES ===== */
-        /* This class is added when the year is below 2025 */
-        .certificate.layout-pre-2025 .cert-title {
+        /* ===== CUSTOM STYLES FOR PRE-2024 CERTIFICATES ===== */
+        /* This class is added when the year is below 2024 */
+        .certificate.layout-pre-2024 .cert-title {
             /* Example: Change font size for Title */
             font-size: 27pt;
         }
 
-        .certificate.layout-pre-2025 .cert-body {
+        .certificate.layout-pre-2024 .cert-body {
             /* Example: Change font size for Body text */
             font-size: 13pt;
         }
 
-        .certificate.layout-pre-2025 .name {
+        .certificate.layout-pre-2024 .name {
             /* Example: Change font size for Name */
             font-size: 22pt;
         }
 
-        .certificate.layout-pre-2025 .signatures{
+        .certificate.layout-pre-2024 .signatures{
             /* Example: Change font size for Name */
             font-size: 2pt;
             /* margin-right: 100px;
-            margin-top: 50px; Custom margin for pre-2025 signatures */
+            margin-top: 50px; Custom margin for pre-2024 signatures */
             top: 190mm;
         }
 
-         .certificate.layout-pre-2025 .sign-name{
+         .certificate.layout-pre-2024 .sign-name{
             /* Example: Change font size for Name */
             font-size: 2pt;
             /* margin-right: 100px;
-            margin-top: 50px; Custom margin for pre-2025 signatures */
-            top: 190mm;
-        }
-
-         .certificate.layout-pre-2025 .sign-name{
-            /* Example: Change font size for Name */
-            font-size: 2pt;
-            /* margin-right: 100px;
-            margin-top: 50px; Custom margin for pre-2025 signatures */
+            margin-top: 50px; Custom margin for pre-2024 signatures */
             top: 190mm;
         }
 
@@ -451,19 +443,19 @@
         ) {
             $displayYear = $m[1];
         }
-        // show on footer for years 2021-2024 or when year is unknown
-        $showOnFooter = is_null($displayYear) || ($displayYear >= 2001 && $displayYear <= 2024);
+        // show on footer for years 2021-2023 or when year is unknown
+        $showOnFooter = is_null($displayYear) || (intval($displayYear) < 2024);
         $showOnMasterPage = !$showOnFooter;
-        // show watermark only for 2025 and above
-        $showWatermark = !is_null($displayYear) && intval($displayYear) >= 2025;
+        // show watermark only for 2024 and above
+        $showWatermark = !is_null($displayYear) && intval($displayYear) >= 2024;
         // show classic layout for certificates before 2020
         $showClassicLayout = !is_null($displayYear) && intval($displayYear) < 2020;
 
-        // Flag for generic pre-2025 layout (Modern but single page)
-        $isPre2025 = !is_null($displayYear) && intval($displayYear) < 2025;
+        // Flag for generic pre-2024 layout (Modern but single page)
+        $isPre2024 = !is_null($displayYear) && intval($displayYear) < 2024;
     @endphp
 
-    <div class="certificate section_A {{ $isPre2025 ? 'layout-pre-2025' : '' }}">
+    <div class="certificate section_A {{ $isPre2024 ? 'layout-pre-2024' : '' }}">
 
         @php
             /*
@@ -583,7 +575,7 @@
     @endif
 
     {{-- ===== CLASSIC LAYOUT (Pre-2020 Certificates) ===== --}}
-    @if ($showClassicLayout)
+    <!-- @if ($showClassicLayout)
         <div class="certificate classic-certificate">
             {{-- Classic Header with Gradient --}}
             <div class="classic-header">
@@ -645,16 +637,16 @@
             </div>
 
             {{-- Footer --}}
-            <div class="classic-footer">
+            {{-- <div class="classic-footer">
                 <div style="margin-bottom: 3mm;">
                     <strong>The National Examination Board in Occupational Safety and Health</strong>
                 </div>
                 <div style="font-size: 10pt;">
                     Registered in England & Wales No. 2698100 | A Charitable Company Charity No. 1010444
                 </div>
-            </div>
+            </div> --}}
         </div>
-    @endif
+    @endif -->
 
 
 

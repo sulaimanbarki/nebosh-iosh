@@ -6,9 +6,9 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item">certificates</li>
-                <li class="breadcrumb-item active">Create Character</li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('certificates.index') }}">Certificates</a></li>
+                <li class="breadcrumb-item active">Create Certificate</li>
             </ol>
         </div><!-- /.col -->
     </div><!-- /.row -->
@@ -18,7 +18,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Create Character</h3>
+                        <h3 class="card-title">Create Certificate</h3>
                         {{-- create user button float right --}}
                         <a href="{{ route('certificates.index') }}" class="btn btn-primary btn-sm float-right">Back</a>
                     </div>

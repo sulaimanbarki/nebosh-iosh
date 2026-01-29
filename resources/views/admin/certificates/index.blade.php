@@ -7,7 +7,7 @@
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
             <li class="breadcrumb-item active">Certificates List</li>
         </ol>
     </div><!-- /.col -->
@@ -18,40 +18,51 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Certificates List</h3>
-                        <a href="{{ route('certificates.create') }}" class="btn btn-primary btn-sm float-right">Create Certificate</a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="card-title mb-0">Certificates List</h3>
+                            <a href="{{ route('certificates.create') }}" class="btn btn-primary btn-sm">Create Certificate</a>
+                        </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body p-0" style="overflow-x: auto">
-                        <table class="table table-striped" style="overflow-x: auto">
+                    <div class="card-body p-0">
+                        <table class="table table-striped table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Name</th>
-                                    <th>Refrence No.</th>
-                                    <th>Action</th>
+                                    <th class="border-0" style="width: 10px">#</th>
+                                    <th class="border-0">Name</th>
+                                    <th class="border-0">Reference No.</th>
+                                    <th class="border-0" style="width: 120px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($certificates as $character)
+                                @foreach ($certificates as $certificate)
                                     <tr>
-                                        <td>{{ $character->id }}</td>
-                                        <td>{{ $character->name }}</td>
-                                        <td>{{ $character->reference }}</td>
-                                        {{-- <td>{{ $character->type == 'free' ? 'Free' : 'Paid' }}</td>
-                                        <td>{{ $character->character_description }}</td>
-                                        <td><img style="width: 100px" src="{{ url($character->icon_link) }}" alt=""></td> --}}
-                                        <td>
-                                            <a href="{{ route('certificates.edit', $character->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                            <form class="form-inline" action="{{ route('certificates.destroy', $character->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                            </form>
+                                        <td class="align-middle">{{ $certificate->id }}</td>
+                                        <td class="align-middle">
+                                            <div class="font-weight-medium">{{ $certificate->name }}</div>
+                                            @if($certificate->character_description)
+                                                <small class="text-muted">{{ Str::limit($certificate->character_description, 40) }}</small>
+                                            @endif
+                                        </td>
+                                        <td class="align-middle">
+                                            <span class="badge badge-light">{{ $certificate->reference }}</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <div class="d-flex gap-2">
+                                                <a href="{{ route('certificates.edit', $certificate->id) }}" class="btn btn-sm btn-outline-primary" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <form action="{{ route('certificates.destroy', $certificate->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this certificate?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>

@@ -40,7 +40,7 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="{{ route('certificates.index') }}" class="small-box-footer">More certificates <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('nebosh_records.index') }}" class="small-box-footer">More certificates <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
