@@ -14,16 +14,16 @@
 
     <!-- Custom styles for PDF viewer -->
     <link rel="stylesheet" href="{{ asset('css/verification-viewer.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('css/mvc.css') }}">
-<link rel="stylesheet" href="{{ asset('css/student-found.css') }}">
-<link rel="stylesheet" href="{{ asset('css/style-bundle.css') }}">
-<style>
-    body {
-        /* font-family: "Poppins", sans-serif;
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/mvc.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/student-found.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-bundle.css') }}">
+    <style>
+        body {
+            /* font-family: "Poppins", sans-serif;
         font-size: 1rem; */
-    }
-</style>
+        }
+    </style>
 </head>
 
 <body
@@ -61,7 +61,8 @@
                                 <div class="kt-portlet__body">
 
                                     <!-- Logos -->
-                                    <div class="kt-header__brand-logo mb-4" style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="kt-header__brand-logo mb-4"
+                                        style="display: flex; justify-content: space-between; align-items: center;">
                                         <img src="https://iosh-digital.com/assets/img/logo-default.png"
                                             alt="IOSH Training" class="kt-header__brand-logo-default"
                                             style="width: 200px; height: auto; margin-left: -13px;">
@@ -129,7 +130,7 @@
                                                             </div>
                                                             <div class="dropdown-item"
                                                                 data-value="rotate-counterclockwise">
-                                                                <i class="fa fa-sync-alt"></i> Rotate Counterclockwise
+                                                                <i class="fa fa-sync-alt"></i> Rotate Counterclockwise 
                                                             </div>
                                                         </div>
 
@@ -237,11 +238,16 @@
                 </div>
                 <div class="kt-footer__menu mb-5"
                     style="display: flex; flex: 1; justify-content: flex-end; align-items: center; margin-right: 40px; margin-top: 14px;">
-                    <a href="/Pages/Privacy" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Privacy</a>
-                    <a href="/Pages/Faq" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">FAQ</a>
-                    <a href="/Pages/Cookies" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Cookies</a>
-                    <a href="/Pages/Terms" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Terms</a>
-                    <a href="/Pages/Support" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Support</a>
+                    <a href="/Pages/Privacy" class="btn-md footer-link" style="color: #afabab !important;"
+                        onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Privacy</a>
+                    <a href="/Pages/Faq" class="btn-md footer-link" style="color: #afabab !important;"
+                        onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">FAQ</a>
+                    <a href="/Pages/Cookies" class="btn-md footer-link" style="color: #afabab !important;"
+                        onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Cookies</a>
+                    <a href="/Pages/Terms" class="btn-md footer-link" style="color: #afabab !important;"
+                        onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Terms</a>
+                    <a href="/Pages/Support" class="btn-md footer-link" style="color: #afabab !important;"
+                        onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Support</a>
                 </div>
             </div>
         </div>
@@ -252,85 +258,31 @@
 
     {{-- PDF VIEWER SCRIPT --}}
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+        document.addEventListener('DOMContentLoaded', function() {
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
 
-        const documentURL = "{{ route('certificate.download', $certificate->id) }}";
-        const container = document.getElementById('pdf-container');
+            const documentURL = "{{ route('certificate.download', $certificate->id) }}";
+            const container = document.getElementById('pdf-container');
 
-        let scale = 1.5;
-        let currentPage = 1;
-        let pageTransitionMode = 'single'; // 'single', 'continuous', 'double', 'cover-facing'
-        let pdfDoc = null;
-        let rotation = 0; // 0, 90, 180, 270
+            let scale = 1.5;
+            let currentPage = 1;
+            let pageTransitionMode = 'single'; // 'single', 'continuous', 'double', 'cover-facing'
+            let pdfDoc = null;
+            let rotation = 0; // 0, 90, 180, 270
 
-        // Render a single page
-        function renderPage(pageNum) {
-            if (!pdfDoc) {
-                pdfjsLib.getDocument(documentURL).promise.then(pdf => {
-                    pdfDoc = pdf;
-                    renderPage(pageNum);
-                });
-                return;
-            }
-            container.innerHTML = '';
-            if (pageTransitionMode === 'double') {
-                // Double Page: show two pages side by side
-                let leftPage = pageNum;
-                let rightPage = pageNum + 1 <= pdfDoc.numPages ? pageNum + 1 : null;
-                pdfDoc.getPage(leftPage).then(page => {
-                    const viewport = page.getViewport({
-                        scale,
-                        rotation
+            // Render a single page
+            function renderPage(pageNum) {
+                if (!pdfDoc) {
+                    pdfjsLib.getDocument(documentURL).promise.then(pdf => {
+                        pdfDoc = pdf;
+                        renderPage(pageNum);
                     });
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-                    page.render({
-                        canvasContext: ctx,
-                        viewport
-                    });
-                    container.appendChild(canvas);
-                    if (rightPage) {
-                        pdfDoc.getPage(rightPage).then(page2 => {
-                            const viewport2 = page2.getViewport({
-                                scale,
-                                rotation
-                            });
-                            const canvas2 = document.createElement('canvas');
-                            const ctx2 = canvas2.getContext('2d');
-                            canvas2.height = viewport2.height;
-                            canvas2.width = viewport2.width;
-                            page2.render({
-                                canvasContext: ctx2,
-                                viewport: viewport2
-                            });
-                            container.appendChild(canvas2);
-                        });
-                    }
-                });
-            } else if (pageTransitionMode === 'cover-facing') {
-                // Cover Facing Page: first page alone, then double pages
-                if (pageNum === 1) {
-                    pdfDoc.getPage(1).then(page => {
-                        const viewport = page.getViewport({
-                            scale,
-                            rotation
-                        });
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-                        page.render({
-                            canvasContext: ctx,
-                            viewport
-                        });
-                        container.appendChild(canvas);
-                    });
-                } else {
-                    // Show two pages: (pageNum, pageNum+1)
+                    return;
+                }
+                container.innerHTML = '';
+                if (pageTransitionMode === 'double') {
+                    // Double Page: show two pages side by side
                     let leftPage = pageNum;
                     let rightPage = pageNum + 1 <= pdfDoc.numPages ? pageNum + 1 : null;
                     pdfDoc.getPage(leftPage).then(page => {
@@ -365,41 +317,64 @@
                             });
                         }
                     });
-                }
-            } else {
-                // Single page (default)
-                pdfDoc.getPage(pageNum).then(page => {
-                    const viewport = page.getViewport({
-                        scale,
-                        rotation
-                    });
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-                    page.render({
-                        canvasContext: ctx,
-                        viewport
-                    });
-                    container.appendChild(canvas);
-                });
-            }
-        }
-
-        // Render all pages (continuous mode)
-        function renderAllPages() {
-            if (!pdfDoc) {
-                pdfjsLib.getDocument(documentURL).promise.then(pdf => {
-                    pdfDoc = pdf;
-                    renderAllPages();
-                });
-                return;
-            }
-            container.innerHTML = '';
-            let renderPromises = [];
-            for (let i = 1; i <= pdfDoc.numPages; i++) {
-                renderPromises.push(
-                    pdfDoc.getPage(i).then(page => {
+                } else if (pageTransitionMode === 'cover-facing') {
+                    // Cover Facing Page: first page alone, then double pages
+                    if (pageNum === 1) {
+                        pdfDoc.getPage(1).then(page => {
+                            const viewport = page.getViewport({
+                                scale,
+                                rotation
+                            });
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+                            page.render({
+                                canvasContext: ctx,
+                                viewport
+                            });
+                            container.appendChild(canvas);
+                        });
+                    } else {
+                        // Show two pages: (pageNum, pageNum+1)
+                        let leftPage = pageNum;
+                        let rightPage = pageNum + 1 <= pdfDoc.numPages ? pageNum + 1 : null;
+                        pdfDoc.getPage(leftPage).then(page => {
+                            const viewport = page.getViewport({
+                                scale,
+                                rotation
+                            });
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+                            page.render({
+                                canvasContext: ctx,
+                                viewport
+                            });
+                            container.appendChild(canvas);
+                            if (rightPage) {
+                                pdfDoc.getPage(rightPage).then(page2 => {
+                                    const viewport2 = page2.getViewport({
+                                        scale,
+                                        rotation
+                                    });
+                                    const canvas2 = document.createElement('canvas');
+                                    const ctx2 = canvas2.getContext('2d');
+                                    canvas2.height = viewport2.height;
+                                    canvas2.width = viewport2.width;
+                                    page2.render({
+                                        canvasContext: ctx2,
+                                        viewport: viewport2
+                                    });
+                                    container.appendChild(canvas2);
+                                });
+                            }
+                        });
+                    }
+                } else {
+                    // Single page (default)
+                    pdfDoc.getPage(pageNum).then(page => {
                         const viewport = page.getViewport({
                             scale,
                             rotation
@@ -413,60 +388,106 @@
                             viewport
                         });
                         container.appendChild(canvas);
-                    })
-                );
+                    });
+                }
             }
-            Promise.all(renderPromises);
-        }
 
-        // Initial load
-        pdfjsLib.getDocument(documentURL).promise.then(pdf => {
-            pdfDoc = pdf;
-            renderPage(currentPage);
-        });
+            // Render all pages (continuous mode)
+            function renderAllPages() {
+                if (!pdfDoc) {
+                    pdfjsLib.getDocument(documentURL).promise.then(pdf => {
+                        pdfDoc = pdf;
+                        renderAllPages();
+                    });
+                    return;
+                }
+                container.innerHTML = '';
+                let renderPromises = [];
+                for (let i = 1; i <= pdfDoc.numPages; i++) {
+                    renderPromises.push(
+                        pdfDoc.getPage(i).then(page => {
+                            const viewport = page.getViewport({
+                                scale,
+                                rotation
+                            });
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+                            page.render({
+                                canvasContext: ctx,
+                                viewport
+                            });
+                            container.appendChild(canvas);
+                        })
+                    );
+                }
+                Promise.all(renderPromises);
+            }
 
-        document.getElementById('zoom-in').onclick = () => {
-            scale += 0.2;
-            if (pageTransitionMode === 'continuous') {
-                renderAllPages();
-            } else {
+            // Initial load
+            pdfjsLib.getDocument(documentURL).promise.then(pdf => {
+                pdfDoc = pdf;
                 renderPage(currentPage);
-            }
-        };
+            });
 
-        document.getElementById('zoom-out').onclick = () => {
-            scale -= 0.2;
-            if (pageTransitionMode === 'continuous') {
-                renderAllPages();
-            } else {
-                renderPage(currentPage);
-            }
-        };
+            document.getElementById('zoom-in').onclick = () => {
+                scale += 0.2;
+                if (pageTransitionMode === 'continuous') {
+                    renderAllPages();
+                } else {
+                    renderPage(currentPage);
+                }
+            };
 
-        document.getElementById('fullscreen-btn').onclick = () => {
-            container.requestFullscreen(); // Trigger fullscreen for PDF container
-        };
+            document.getElementById('zoom-out').onclick = () => {
+                scale -= 0.2;
+                if (pageTransitionMode === 'continuous') {
+                    renderAllPages();
+                } else {
+                    renderPage(currentPage);
+                }
+            };
 
-        // PDF Options: Page Transition (Continuous/Page-by-Page), Orientation, and Layout
-        document.querySelectorAll('#pdf-options-dropdown .dropdown-item').forEach(
-            function(item) {
-                item.addEventListener('click', function() {
-                    const value = this.getAttribute('data-value');
-                    console.log('Dropdown item clicked:', value); // Debug
+            document.getElementById('fullscreen-btn').onclick = () => {
+                container.requestFullscreen(); // Trigger fullscreen for PDF container
+            };
+            // Replace your current event listener with this:
+            document.addEventListener('click', function(event) {
+                const item = event.target.closest('.dropdown-item');
+
+                if (item && (item.closest('#pdf-options-dropdown') || item.closest('.dropdown-section'))) {
+                    event.preventDefault();
+                    const value = item.getAttribute('data-value');
+
+                    // Your existing logic for handling values
                     if (value === 'continuous') {
                         pageTransitionMode = 'continuous';
+                        container.style.overflowY = 'scroll';
+                        container.style.display = 'block';
                         renderAllPages();
                     } else if (value === 'page-by-page' || value === 'single-page') {
                         pageTransitionMode = 'single';
+                        container.style.overflowY = 'hidden';
+                        container.style.display = 'block';
+                        container.style.width = '100%';
                         renderPage(currentPage);
                     } else if (value === 'double-page') {
                         pageTransitionMode = 'double';
-                        // Always use odd page as left page
+                        container.style.display = 'flex';
+                        container.style.flexDirection = 'row';
+                        container.style.flexWrap = 'wrap';
+                        container.style.justifyContent = 'center';
+                        container.style.gap = '10px';
                         if (currentPage % 2 === 0) currentPage--;
                         renderPage(currentPage);
                     } else if (value === 'cover-facing-page') {
                         pageTransitionMode = 'cover-facing';
-                        // Always start at 1 for cover
+                        container.style.display = 'flex';
+                        container.style.flexDirection = 'row';
+                        container.style.flexWrap = 'wrap';
+                        container.style.justifyContent = 'center';
+                        container.style.gap = '10px';
                         if (currentPage !== 1 && currentPage % 2 === 0) currentPage--;
                         renderPage(currentPage);
                     } else if (value === 'rotate-clockwise') {
@@ -486,129 +507,139 @@
                     }
 
                     // Close the dropdown after selection
-                    document.getElementById('pdf-options-dropdown').classList.remove('show');
-                });
+                    const dropdown = document.getElementById('pdf-options-dropdown') || item.closest(
+                        '.dropdown-section');
+                    if (dropdown) dropdown.classList.remove('show');
+                }
             });
 
-        // Fullscreen logic for both icon and menu
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
-        const gearBtn = document.querySelector('.fa-cog').parentElement;
+            // Fullscreen logic for both icon and menu
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const gearBtn = document.querySelector('.fa-cog').parentElement;
 
-        function openFullscreen() {
-            container.requestFullscreen();
-        }
-        fullscreenBtn.onclick = openFullscreen;
-        gearBtn.onclick = function(e) {
-            // Only trigger fullscreen if not opening dropdown
-            if (e.target.classList.contains('fa-cog')) {
-                openFullscreen();
-            } else {
-                myFunction(); // open dropdown
+            function openFullscreen() {
+                container.requestFullscreen();
             }
-        };
+            fullscreenBtn.onclick = openFullscreen;
+            gearBtn.onclick = function(e) {
+                // Only trigger fullscreen if not opening dropdown
+                if (e.target.classList.contains('fa-cog')) {
+                    openFullscreen();
+                } else {
+                    myFunction(); // open dropdown
+                }
+            };
 
-        // Dropdown functionality (scoped for each dropdown)
-        function myFunction() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
+            // Dropdown functionality (incoped for each dropdown)
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
 
-        // PDF Options Dropdown (scoped)
-        const pdfOptionsBtn = document.querySelector('.pdf-options-btn');
-        const pdfOptionsDropdown = document.getElementById('pdf-options-dropdown');
-        pdfOptionsBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            pdfOptionsDropdown.classList.toggle('show');
-            // Hide other dropdowns
-            document.getElementById("myDropdown").classList.remove("show");
-        });
-
-        // Gear/settings dropdown (scoped)
-        const gearDropdownBtn = document.querySelector('.fa-cog').parentElement;
-        const gearDropdown = document.getElementById('myDropdown');
-        gearDropdownBtn.addEventListener('click', function(e) {
-            // Only open dropdown if not triggering fullscreen
-            if (!e.target.classList.contains('fa-cog')) {
+            // PDF Options Dropdown (scoped)
+            const pdfOptionsBtn = document.querySelector('.pdf-options-btn');
+            const pdfOptionsDropdown = document.getElementById('pdf-options-dropdown');
+            pdfOptionsBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                gearDropdown.classList.toggle('show');
+                pdfOptionsDropdown.classList.toggle('show');
                 // Hide other dropdowns
-                pdfOptionsDropdown.classList.remove('show');
+                document.getElementById("myDropdown").classList.remove("show");
+            });
+
+            // Gear/settings dropdown (scoped)
+            const gearDropdownBtn = document.querySelector('.fa-cog').parentElement;
+            const gearDropdown = document.getElementById('myDropdown');
+            gearDropdownBtn.addEventListener('click', function(e) {
+                // Only open dropdown if not triggering fullscreen
+                if (!e.target.classList.contains('fa-cog')) {
+                    e.stopPropagation();
+                    gearDropdown.classList.toggle('show');
+                    // Hide other dropdowns
+                    pdfOptionsDropdown.classList.remove('show');
+                }
+            });
+
+            // Close dropdowns if clicking outside
+            window.addEventListener('click', function(event) {
+                if (!event.target.closest('.dropdown')) {
+                    pdfOptionsDropdown.classList.remove('show');
+                    gearDropdown.classList.remove('show');
+                }
+            });
+
+            // Hand tool functionality
+            const handIconButton = document.getElementById('hand-icon-btn');
+            let isDragging = false;
+            let startX;
+            let startY;
+            let scrollLeft;
+            let scrollTop;
+
+            handIconButton.addEventListener('click', function() {
+                container.classList.toggle('grab');
+            });
+
+            function startDrag(e) {
+                isDragging = true;
+                container.classList.add('grabbing');
+                startX = e.pageX - container.offsetLeft;
+                startY = e.pageY - container.offsetTop;
+                scrollLeft = container.scrollLeft;
+                scrollTop = container.scrollTop;
+                e.preventDefault();
             }
-        });
 
-        // Close dropdowns if clicking outside
-        window.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                pdfOptionsDropdown.classList.remove('show');
-                gearDropdown.classList.remove('show');
+            function drag(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - container.offsetLeft;
+                const y = e.pageY - container.offsetTop;
+                const walkX = (x - startX) * 2;
+                const walkY = (y - startY) * 2;
+                container.scrollLeft = scrollLeft - walkX;
+                container.scrollTop = scrollTop - walkY;
             }
-        });
 
-        // Hand tool functionality
-        const handIconButton = document.getElementById('hand-icon-btn');
-        let isDragging = false;
-        let startX;
-        let startY;
-        let scrollLeft;
-        let scrollTop;
-
-        handIconButton.addEventListener('click', function() {
-            container.classList.toggle('grab');
-        });
-
-        function startDrag(e) {
-            isDragging = true;
-            container.classList.add('grabbing');
-            startX = e.pageX - container.offsetLeft;
-            startY = e.pageY - container.offsetTop;
-            scrollLeft = container.scrollLeft;
-            scrollTop = container.scrollTop;
-            e.preventDefault();
-        }
-
-        function drag(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - container.offsetLeft;
-            const y = e.pageY - container.offsetTop;
-            const walkX = (x - startX) * 2;
-            const walkY = (y - startY) * 2;
-            container.scrollLeft = scrollLeft - walkX;
-            container.scrollTop = scrollTop - walkY;
-        }
-
-        function stopDrag() {
-            isDragging = false;
-            container.classList.remove('grabbing');
-        }
-
-        container.addEventListener('mousedown', function(e) {
-            if (container.classList.contains('grab')) {
-                startDrag(e);
+            function stopDrag() {
+                isDragging = false;
+                container.classList.remove('grabbing');
             }
-        });
 
-        container.addEventListener('mousemove', drag);
-        container.addEventListener('mouseup', stopDrag);
-        container.addEventListener('mouseleave', stopDrag);
+            container.addEventListener('mousedown', function(e) {
+                if (container.classList.contains('grab')) {
+                    startDrag(e);
+                }
+            });
 
-        // Zoom size dropdown functionality
-        document.getElementById('zoom-size').addEventListener('change', function() {
-            const zoomValue = this.value;
-            if (zoomValue === 'fit-width') {
-                scale = container.offsetWidth / 800;
-            } else if (zoomValue === 'fit-page') {
-                scale = Math.min(container.offsetWidth / 800, container.offsetHeight / 1000);
-            } else {
-                scale = parseFloat(zoomValue);
-            }
-            if (pageTransitionMode === 'continuous') {
-                renderAllPages();
-            } else {
-                renderPage(currentPage);
-            }
+            container.addEventListener('mousemove', drag);
+            container.addEventListener('mouseup', stopDrag);
+            container.addEventListener('mouseleave', stopDrag);
+
+            // Zoom size dropdown functionality
+            document.getElementById('zoom-size').addEventListener('change', function() {
+                const zoomValue = this.value;
+                if (zoomValue === 'fit-width') {
+                    scale = container.offsetWidth / 800;
+                } else if (zoomValue === 'fit-page') {
+                    scale = Math.min(container.offsetWidth / 800, container.offsetHeight / 1000);
+                } else {
+                    scale = parseFloat(zoomValue);
+                }
+                if (pageTransitionMode === 'continuous') {
+                    renderAllPages();
+                } else {
+                    renderPage(currentPage);
+                }
+            });
         });
-    });
     </script>
+
+
+ 
+
+
+
+
+
 
 
 

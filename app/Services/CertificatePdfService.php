@@ -171,19 +171,23 @@ class CertificatePdfService
         // );
 
         // --- QR CODE GENERATION AND EMBEDDING ---
-        // Data for QR code (customize as needed)
-        $qrData = url('/verify?reference=' . $record->certificate_number);
-        $qrTempPath = storage_path('app/temp_qr_' . $record->certificate_number . '.png');
-        // Set background color to white (default: [255,255,255]), change as needed
-        \QrCode::format('png')->size(200)->margin(0)->backgroundColor(245, 250, 245)->generate($qrData, $qrTempPath);
+        try {
+            // Data for QR code (customize as needed)
+            $qrData = url('/verify?reference=' . $record->certificate_number);
+            $qrTempPath = storage_path('app/temp_qr_' . $record->certificate_number . '.png');
+            // Set background color to white (default: [255,255,255]), change as needed
+            \QrCode::format('png')->size(200)->margin(0)->backgroundColor(245, 250, 245)->generate($qrData, $qrTempPath);
 
-        // Add QR code image to PDF (bottom right corner, adjust as needed)
-        if (file_exists($qrTempPath)) {
-            $qrX = 24; // X position in mm
-            $qrY = 265; // Y position in mm
-            $qrSize = 17.5; // Size in mm
-            $pdf->Image($qrTempPath, $qrX, $qrY, $qrSize, $qrSize, 'PNG');
-            @unlink($qrTempPath);
+            // Add QR code image to PDF (bottom right corner, adjust as needed)
+            if (file_exists($qrTempPath)) {
+                $qrX = 24; // X position in mm
+                $qrY = 265; // Y position in mm
+                $qrSize = 17.5; // Size in mm
+                $pdf->Image($qrTempPath, $qrX, $qrY, $qrSize, $qrSize, 'PNG');
+                @unlink($qrTempPath);
+            }
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::warning('QR Code generation failed for certificate ' . $record->certificate_number . ': ' . $e->getMessage());
         }
 
         return $pdf->Output('S');
