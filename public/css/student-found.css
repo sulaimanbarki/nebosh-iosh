@@ -1,0 +1,223 @@
+.table tr td:nth-child(1) {
+  font-weight: bold;
+}
+
+.pdf-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 2px;
+}
+
+.pdf-toolbar-left {
+  display: flex;
+  gap: 10px;
+}
+
+.pdf-toolbar-right {
+  display: flex;
+  gap: 10px;
+}
+
+.main-container {
+  width: 100%;
+  /* height:650; */
+  height: 800px;
+  max-width: 100%;
+  border: 1px solid #ccc;
+  overflow: hidden;
+
+}
+
+.pdf-container {
+  width: 100%;
+  height:650;
+  height: 750px;
+  max-width: 100%;
+  /* border: 1px solid #ccc; */
+  overflow: hidden;
+  text-align: center;
+}
+
+
+
+button {
+  margin: 5px;
+}
+
+
+/* Button Circle Style */
+.circle-btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #969696;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: white;
+  color: #969696;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px
+}
+
+
+#zoom-size {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+/* Hover Effect */
+#zoom-size:hover {
+  border-color: #007bff;
+  /* Change border color on hover */
+  background-color: #f8f9fa;
+  /* Slight background change */
+}
+
+/* Focus Effect (When the dropdown is clicked) */
+#zoom-size:focus {
+  outline: none;
+  border-color: #007bff;
+  /* Blue border when focused */
+  background-color: #e9ecef;
+  /* Light gray background when focused */
+}
+
+/* Hand Cursor Styles */
+#pdf-container {
+  cursor: default;
+  /* Default cursor for the document */
+}
+
+#pdf-container.grab {
+  cursor: grab;
+  /* Cursor when drag is enabled */
+}
+
+#pdf-container.grabbing {
+  cursor: grabbing;
+  /* Cursor when the document is being dragged */
+}
+
+
+
+.dropbtn {
+  /* padding: 12px; */
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.show {
+  display: block;
+}
+
+
+
+
+
+
+/* Dropdown Content Styling */
+#pdf-options-dropdown {
+  display: none;
+  /* Hidden by default */
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 200px;
+  padding: 10px;
+}
+
+.dropdown-section {
+  margin-bottom: 10px;
+}
+
+.dropdown-section label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-item i {
+  margin-right: 10px;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Show dropdown when active */
+.show {
+  display: block;
+}
+
+/* Add this to create the vertical line */
+.vertical-line {
+  border-left: 2px solid #cfcfcf;
+  /* Change the color and thickness as needed */
+  height: 35px;
+  /* Adjust the height to match the buttons */
+  margin: 0 10px;
+  display: inline-block;
+  /* Makes the line appear inline with the buttons */
+  align-items: center;
+  justify-content: center;
+
+}
+
+select option {
+  background-color: white;
+}

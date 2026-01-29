@@ -15,7 +15,15 @@
     <!-- Custom styles for PDF viewer -->
     <link rel="stylesheet" href="{{ asset('css/verification-viewer.css') }}">
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
+<link rel="stylesheet" href="{{ asset('css/mvc.css') }}">
+<link rel="stylesheet" href="{{ asset('css/student-found.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style-bundle.css') }}">
+<style>
+    body {
+        /* font-family: "Poppins", sans-serif;
+        font-size: 1rem; */
+    }
+</style>
 </head>
 
 <body
@@ -64,7 +72,7 @@
 
                                     <!-- Success message -->
                                     <div class="alert alert-success" role="alert"
-                                        style="display: flex; align-items: center; color: #ffffff; background-color: #007A5A;">
+                                        style="display: flex; align-items: center; color: #ffffff; background-color: #007A5A;;">
                                         <div class="alert-icon" style="margin-right: 10px;">
                                             <i aria-hidden="true" class="far fa-check-circle fa-lg"></i>
                                         </div>
@@ -220,20 +228,20 @@
     <!-- begin::Footer -->
     <div class="kt-footer kt-footer--extended kt-grid__item footer-fullwidth-bg" style="margin-bottom: 0;">
         <div class="kt-footer__bottom"
-            style="background: #002147; color: #fff; padding: 32px 0 0 0; box-shadow: 0 0 0 100vmax #002147; clip-path: inset(0 -100vmax); margin-bottom: 0;">
+            style="background: #181824; color: #afabab; padding: 10px 0 0 0; box-shadow: 0 0 0 100vmax #002147; clip-path: inset(0 -100vmax); margin-bottom: 0;">
             <div class="kt-footer__wrapper"
-                style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; max-width: 1450px; margin: 0 auto; width: 100%; min-height: 48px;">
+                style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; max-width: 1450px; margin: 0 auto; width: 100%; min-height: 28px;">
                 <div class="kt-footer__copyright"
-                    style="color: #fff; font-size: 16px; letter-spacing: 1px; flex: 1; text-align: left; display: flex; align-items: center;">
+                    style="color: #afabab; font-size: 14px; flex: 1; text-align: left; display: flex; align-items: center; margin-left: 30px; margin-bottom: 10px;">
                     {{ date('Y') }} &copy; {{ config('app.name', 'DSSL') }}
                 </div>
                 <div class="kt-footer__menu mb-5"
-                    style="display: flex; gap: 18px; flex: 1; justify-content: flex-end; align-items: center;">
-                    <a href="/Pages/Privacy" class="btn-md footer-link">Privacy</a>
-                    <a href="/Pages/Faq" class="btn-md footer-link">FAQ</a>
-                    <a href="/Pages/Cookies" class="btn-md footer-link">Cookies</a>
-                    <a href="/Pages/Terms" class="btn-md footer-link">Terms</a>
-                    <a href="/Pages/Support" class="btn-md footer-link">Support</a>
+                    style="display: flex; flex: 1; justify-content: flex-end; align-items: center; margin-right: 40px; margin-top: 14px;">
+                    <a href="/Pages/Privacy" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Privacy</a>
+                    <a href="/Pages/Faq" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">FAQ</a>
+                    <a href="/Pages/Cookies" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Cookies</a>
+                    <a href="/Pages/Terms" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Terms</a>
+                    <a href="/Pages/Support" class="btn-md footer-link" style="color: #afabab !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#afabab'">Support</a>
                 </div>
             </div>
         </div>
@@ -244,6 +252,7 @@
 
     {{-- PDF VIEWER SCRIPT --}}
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
         pdfjsLib.GlobalWorkerOptions.workerSrc =
             "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
 
@@ -416,7 +425,6 @@
             renderPage(currentPage);
         });
 
-
         document.getElementById('zoom-in').onclick = () => {
             scale += 0.2;
             if (pageTransitionMode === 'continuous') {
@@ -435,16 +443,16 @@
             }
         };
 
-
         document.getElementById('fullscreen-btn').onclick = () => {
             container.requestFullscreen(); // Trigger fullscreen for PDF container
         };
+
         // PDF Options: Page Transition (Continuous/Page-by-Page), Orientation, and Layout
         document.querySelectorAll('#pdf-options-dropdown .dropdown-item').forEach(
             function(item) {
                 item.addEventListener('click', function() {
                     const value = this.getAttribute('data-value');
-                    
+                    console.log('Dropdown item clicked:', value); // Debug
                     if (value === 'continuous') {
                         pageTransitionMode = 'continuous';
                         renderAllPages();
@@ -599,6 +607,7 @@
                 renderPage(currentPage);
             }
         });
+    });
     </script>
 
 
