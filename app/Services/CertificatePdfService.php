@@ -74,9 +74,9 @@ class CertificatePdfService
             null,
             false,
             0,
-            56,
-            56,
-            56
+            0,
+            0,
+            0
         );
 
         // Issue Date (centered, dynamic)
@@ -94,9 +94,9 @@ class CertificatePdfService
             null,
             false,
             0,
-            56,
-            56,
-            56
+            0,
+            0,
+            0
         );
 
         // Institution Name
@@ -114,9 +114,9 @@ class CertificatePdfService
             null,
             false,
             1.1,
-            56,
-            56,
-            56
+            0,
+            0,
+            0
         );
 
         // Approved Number
@@ -134,9 +134,9 @@ class CertificatePdfService
                     null,
                     false,
                     0,
-                    56,
-                    56,
-                    56
+                    0,
+                    0,
+                    0
                 );
 
         // Course Organise (dynamic)

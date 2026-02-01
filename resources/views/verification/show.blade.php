@@ -89,18 +89,21 @@
 
                                     <!-- PDF Viewer Container -->
                                     <div class="main-container">
-                                        <div class="pdf-toolbar">
+                                        <div class="pdf-toolbar p-2 d-flex justify-content-between">
                                             <div class="pdf-toolbar-left">
                                                 <button
                                                     style="background-color: transparent; border: none;color:#969696"><i
                                                         class="fa fa-columns fa-xl" aria-hidden="true"></i></button>
-                                                <div class="vertical-line"></div>
+                                                <div class="vertical-line"
+                                                    style="width: 2px; height: 40px; display: inline-block; border-radius: 2px;">
+                                                </div>
+
 
                                                 <div class="dropdown">
                                                     <!-- Custom Dropdown Button -->
-                                                    <button class="dropbtn pdf-options-btn"
+                                                    <button class="dropbtn pdf-options-btn mt-1"
                                                         style="background-color: transparent; border: none;">
-                                                        <svg width="22" height="22" viewBox="0 0 22 26"
+                                                        <svg width="28" height="28" viewBox="0 0 22 26"
                                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path
                                                                 d="M11.0332 13.2227C9.78417 13.2228 8.7793 14.2428 8.7793 15.4922C8.77931 16.7415 9.78417 17.7615 11.0332 17.7617C12.2824 17.7617 13.2881 16.7417 13.2881 15.4922C13.2881 14.2427 12.2824 13.2227 11.0332 13.2227ZM10.623 18.542L10.249 18.4443C9.97752 18.3733 9.71704 18.2636 9.47559 18.1191L9.13965 17.918L8.86426 18.1963L8.10449 18.9619L7.56836 18.4199L8.33398 17.6484L8.60449 17.375L8.40918 17.043C8.26578 16.799 8.15757 16.5355 8.08691 16.2607L7.99023 15.8848H6.5V15.1152H7.99023L8.08691 14.7393C8.15757 14.4645 8.26578 14.201 8.40918 13.957L8.60449 13.625L8.33398 13.3516L7.56836 12.5791L8.10449 12.0371L8.86426 12.8037L9.13965 13.082L9.47559 12.8809C9.71704 12.7364 9.97753 12.6267 10.249 12.5557L10.623 12.458V11H11.377V12.458L11.751 12.5557C12.0225 12.6267 12.283 12.7364 12.5244 12.8809L12.8604 13.082L13.1357 12.8037L13.8945 12.0371L14.4307 12.5791L13.666 13.3516L13.3955 13.625L13.5908 13.957C13.7342 14.201 13.8424 14.4645 13.9131 14.7393L14.0098 15.1152H15.5V15.8848H14.0098L13.9131 16.2607C13.8424 16.5355 13.7342 16.799 13.5908 17.043L13.3955 17.375L13.666 17.6484L14.4307 18.4199L13.8945 18.9619L13.1357 18.1963L12.8604 17.918L12.5244 18.1191C12.283 18.2636 12.0225 18.3733 11.751 18.4443L11.377 18.542V20H10.623V18.542Z"
@@ -112,44 +115,52 @@
                                                     </button>
 
                                                     <!-- Custom Dropdown Content -->
-                                                    <div id="pdf-options-dropdown" class="dropdown-content">
+                                                    <div id="pdf-options-dropdown" class="dropdown-content"
+                                                        style="width: 250px; height: 400px;">
                                                         <div class="dropdown-section" id="pdf-options">
-                                                            <label>Page Transition</label>
-                                                            <div class="dropdown-item" data-value="continuous">
+                                                            <label style="font-size: 16px;">Page Transition</label>
+                                                            <div class="dropdown-item" data-value="continuous"
+                                                                style="font-size: 18px;">
                                                                 <i class="fa fa-arrow-right"></i> Continuous Page
                                                             </div>
-                                                            <div class="dropdown-item" data-value="page-by-page">
+                                                            <div class="dropdown-item" data-value="page-by-page"
+                                                                style="font-size: 18px;">
                                                                 <i class="fa fa-bars"></i> Page by Page
                                                             </div>
                                                         </div>
 
                                                         <div class="dropdown-section">
-                                                            <label>Page Orientation</label>
-                                                            <div class="dropdown-item" data-value="rotate-clockwise">
+                                                            <label style="font-size: 16px;">Page Orientation</label>
+                                                            <div class="dropdown-item" data-value="rotate-clockwise"
+                                                                style="font-size: 18px;">
                                                                 <i class="fa fa-sync-alt"></i> Rotate Clockwise
                                                             </div>
                                                             <div class="dropdown-item"
-                                                                data-value="rotate-counterclockwise">
-                                                                <i class="fa fa-sync-alt"></i> Rotate Counterclockwise 
+                                                                data-value="rotate-counterclockwise"
+                                                                style="font-size: 18px;">
+                                                                <i class="fa fa-sync-alt"></i> Rotate Counterclockwise
                                                             </div>
                                                         </div>
 
                                                         <div class="dropdown-section">
-                                                            <label>Page Layout</label>
-                                                            <div class="dropdown-item" data-value="single-page">
+                                                            <label style="font-size: 16px;">Page Layout</label>
+                                                            <div class="dropdown-item" data-value="single-page"
+                                                                style="font-size: 18px;">
                                                                 <i class="fa fa-file"></i> Single Page
                                                             </div>
-                                                            <div class="dropdown-item" data-value="double-page">
+                                                            <div class="dropdown-item" data-value="double-page"
+                                                                style="font-size: 18px;">
                                                                 <i class="fa fa-columns"></i> Double Page
                                                             </div>
-                                                            <div class="dropdown-item" data-value="cover-facing-page">
+                                                            <div class="dropdown-item" data-value="cover-facing-page"
+                                                                style="font-size: 18px;">
                                                                 <i class="fa fa-book"></i> Cover Facing Page
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <select id="zoom-size" style="">
+                                                <select id="zoom-size">
                                                     <option value="fit-width">Fit to Width</option>
                                                     <option value="fit-page">Fit to Page</option>
                                                     <option value="0.1">10%</option>
@@ -166,11 +177,15 @@
                                                     <option value="64">6400%</option>
                                                 </select>
 
-                                                <button id="zoom-in" class="circle-btn"><i
+                                                <button id="zoom-in" class="circle-btn mt-1"
+                                                    style="width: 28px; height: 28px; font-size: 2rem;"><i
                                                         class="fa-solid fa-plus fa-xs"></i></button>
-                                                <button id="zoom-out" class="circle-btn"><i
+                                                <button id="zoom-out" class="circle-btn mt-1"
+                                                    style="width: 28px; height: 28px; font-size: 2rem;"><i
                                                         class="fa-solid fa-minus fa-xs"></i></button>
-                                                <div class="vertical-line"></div>
+                                                <div class="vertical-line"
+                                                    style="width: 2px; height: 40px; display: inline-block; border-radius: 2px;">
+                                                </div>
                                                 <button id="hand-icon-btn"
                                                     style="background-color: transparent; border: none;color:#969696">
 
@@ -634,7 +649,7 @@
     </script>
 
 
- 
+
 
 
 

@@ -34,7 +34,7 @@ class CertificatePdfController extends Controller
 
             return response($pdfContent)
                 ->header('Content-Type', 'application/pdf')
-                ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
+                ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
         } catch (Exception $e) {
             return response('Error: ' . $e->getMessage() . ' Trace: ' . $e->getTraceAsString(), 500);
             // return back()->with('error', 'Could not generate certificate: ' . $e->getMessage());

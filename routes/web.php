@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/first-step/Details/{registration_id}', [RecordController::class, 'details'])->name('validation.details');
 Route::get('/Validation/Details/{registration_id}', [RecordController::class, 'verification'])->name('validation.verification.step1');
-Route::get('/Validation/Certificate/{certificate_number}', [RecordController::class, 'showCertificateVerification'])->name('validation.certificate.show');
+// Route::get('/Validation/Certificate/{certificate_number}', [RecordController::class, 'showCertificateVerification'])->name('validation.certificate.show');
 Route::get('/verify', [RecordController::class, 'verifyByReference'])->name('validation.verify');
 Route::get('/ConfirmRequest/{id}', [RecordController::class, 'ConfirmRequest'])->name('validation.verification.step2');
     Route::get('/Validation/CheckCertExists', [RecordController::class, 'checkCertExists'])->name('validation.verification.checkCertExists');
