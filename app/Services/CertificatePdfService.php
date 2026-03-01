@@ -59,6 +59,88 @@ class CertificatePdfService
             // 56
         );
 
+        // Course Name (centered, dynamic)
+        $this->addText(
+            $pdf,
+            0,              // X position - change this
+            115,            // Y position - change this
+            $record->course_name,
+            24,             // fontSize
+            'B',            // fontStyle
+            'C',            // align (Center)
+            null,           // marginLeft
+            null,           // marginRight
+            null,           // marginTop
+            null,           // marginBottom
+            false,          // autoCenterY
+            0,              // charSpacing
+            0,              // textColorR
+            0,              // textColorG
+            0               // textColorB
+        );
+
+        // Institution of Occupational
+        // $this->addText(
+        //     $pdf,
+        //     0,
+        //     138,
+        //       $record->institution_occupational ?? "Institution of Occupational Safety 
+        //       and\nHealth",
+        //     21,
+        //     'B',
+        //     'C',
+        //     null,
+        //     10,
+        //     null,
+        //     null,
+        //     false,
+        //     0,
+        //     0,
+        //     0,
+        //     0
+        // );
+
+
+        // Line 1: "Institution of Occupational Safety and"
+$this->addText(
+    $pdf,
+    0,
+    144,
+    "Institution of Occupational Safety and",
+    22,
+    'B',
+    'C',
+    null,
+    21,
+    null,
+    null,
+    false,
+    0.5,
+    0,
+    0,
+    0
+);
+
+// Line 2: "Health" (Y position + line height, e.g., 138 + 10 = 148)
+$this->addText(
+    $pdf,
+    0,
+    154,    // moved down by line height
+    "Health",
+    22,
+    'B',
+    'C',
+    null,
+    15,
+    null,
+    null,
+    false,
+    0.8,
+    0,
+    0,
+    0
+);
+
         // Certificate Number (bottom center)
         $this->addText(
             $pdf,
@@ -99,6 +181,7 @@ class CertificatePdfService
             0
         );
 
+        
         // Institution Name
         $this->addText(
             $pdf,
@@ -159,16 +242,25 @@ class CertificatePdfService
             42
         );
 
-        // Course Name (centered, dynamic)
-        // $this->addText(
-        //     $pdf,
-        //     0,
-        //     145,
-        //     $record->course_name,
-        //     14,
-        //     '',
-        //     'C'
-        // );
+        // Chief Executive (dynamic)
+        $this->addText(
+            $pdf,
+            0,
+            225,
+            $record->chief_executive ?? 'Chief Executive',
+            13,
+            '',
+            'C',
+            null,
+            null,
+            null,
+            null,
+            false,
+            0,
+            50,
+            50,
+            50
+        );
 
         // --- QR CODE GENERATION AND EMBEDDING ---
         try {
@@ -176,7 +268,7 @@ class CertificatePdfService
             $qrData = url('/verify?reference=' . $record->certificate_number);
             $qrTempPath = storage_path('app/temp_qr_' . $record->certificate_number . '.png');
             // Set background color to white (default: [255,255,255]), change as needed
-            \QrCode::format('png')->size(200)->margin(0)->backgroundColor(245, 250, 245)->generate($qrData, $qrTempPath);
+            QrCode::format('png')->size(200)->margin(0)->backgroundColor(245, 250, 245)->generate($qrData, $qrTempPath);
 
             // Add QR code image to PDF (bottom right corner, adjust as needed)
             if (file_exists($qrTempPath)) {
@@ -250,14 +342,24 @@ class CertificatePdfService
             $pdf->_out(sprintf('BT %.3F Tc ET', $charSpacing));
         }
 
-        $pdf->Cell(
-            $usableWidth,
-            $fontSize * $this->lineHeightFactor,
-            $encodedText,
-            0,
-            1,
-            $align
-        );
+        if (str_contains($encodedText, "\n")) {
+            $pdf->MultiCell(
+                $usableWidth,
+                $fontSize * $this->lineHeightFactor,
+                $encodedText,
+                0,
+                $align
+            );
+        } else {
+            $pdf->Cell(
+                $usableWidth,
+                $fontSize * $this->lineHeightFactor,
+                $encodedText,
+                0,
+                1,
+                $align
+            );
+        }
 
         // RESET character spacing
         if ($charSpacing > 0) {

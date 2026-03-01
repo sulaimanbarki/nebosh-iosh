@@ -12,6 +12,7 @@ class NeboshRecord extends Model
     protected $fillable = [
         'student_name',
         'course_name',
+        'institution_occupational',
         'institution_name',
         'approved_centre',
         'certificate_number',

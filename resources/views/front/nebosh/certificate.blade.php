@@ -248,7 +248,7 @@
 
                         <div class="text-course-approved">a course approved and validated by the</div>
 
-                        <div class="awarding-body">Institution of Occupational Safety and Health</div>
+                        <div class="awarding-body">{{ $neboshRecord->institution_occupational ?? 'Institution of Occupational Safety and Health' }}</div>
 
                         <div class="text-in-association">in association with</div>
 

@@ -38,7 +38,15 @@ class NeboshRecordController extends Controller
      */
     public function create()
     {
-        return view('admin.nebosh_records.create');
+        $formDefaults = [
+            'course_name' => config('nebosh.course_name', 'IOSH Managing Safely'),
+            'institution_occupational' => config('nebosh.institution_occupational', 'Institution for Occupational Safety and Health'),
+            'institution_name' => config('nebosh.institution_name', 'Global World Safety Institute'),
+            'approved_centre' => config('nebosh.approved_centre', '2216'),
+            'chief_executive' => config('nebosh.chief_executive', 'Vanessa Harwood-Whitcher'),
+        ];
+        
+        return view('admin.nebosh_records.create', compact('formDefaults'));
     }
 
     /**
@@ -52,6 +60,7 @@ class NeboshRecordController extends Controller
         $request->validate([
             'student_name' => 'required|string|max:255',
             'course_name' => 'required|string|max:255',
+            'institution_occupational' => 'nullable|string|max:255',
             'institution_name' => 'required|string|max:255',
             'approved_centre' => 'required|string|max:255',
             'certificate_number' => 'required|string|max:255',
@@ -106,6 +115,7 @@ class NeboshRecordController extends Controller
         $request->validate([
             'student_name' => 'required|string|max:255',
             'course_name' => 'required|string|max:255',
+            'institution_occupational' => 'nullable|string|max:255',
             'institution_name' => 'required|string|max:255',
             'approved_centre' => 'required|string|max:255',
             'certificate_number' => 'required|string|max:255',

@@ -29,6 +29,10 @@
                             <input type="text" name="course_name" class="form-control" required value="{{ old('course_name', $neboshRecord->course_name) }}">
                         </div>
                         <div class="col-md-6 mb-3">
+                            <label>Institution of Occupational</label>
+                            <input type="text" name="institution_occupational" class="form-control" value="{{ old('institution_occupational', $neboshRecord->institution_occupational) }}">
+                        </div>
+                        <div class="col-md-6 mb-3">
                             <label>Institution Name</label>
                             <input type="text" name="institution_name" class="form-control" required value="{{ old('institution_name', $neboshRecord->institution_name) }}">
                         </div>

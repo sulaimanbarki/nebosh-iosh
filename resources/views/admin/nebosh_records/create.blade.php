@@ -25,15 +25,19 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Course Name</label>
-                            <input type="text" name="course_name" class="form-control" value="IOSH Managing Safely" required>
+                            <input type="text" name="course_name" class="form-control" value="{{ $formDefaults['course_name'] }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Institution of Occupational</label>
+                            <input type="text" name="institution_occupational" class="form-control" value="{{ $formDefaults['institution_occupational'] }}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Institution Name</label>
-                            <input type="text" name="institution_name" class="form-control" value="Global World Safety Institute" required>
+                            <input type="text" name="institution_name" class="form-control" value="{{ $formDefaults['institution_name'] }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Approved Centre</label>
-                            <input type="text" name="approved_centre" class="form-control" value="2216" required>
+                            <input type="text" name="approved_centre" class="form-control" value="{{ $formDefaults['approved_centre'] }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Certificate Number</label>
@@ -46,7 +50,7 @@
                         
                         <div class="col-md-6 mb-3">
                             <label>Chief Executive Name</label>
-                            <input type="text" name="chief_executive" class="form-control" value="Vanessa Harwood-Whitcher">
+                            <input type="text" name="chief_executive" class="form-control" value="{{ $formDefaults['chief_executive'] }}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Course Organiser Name</label>
