@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class CertificatePdfService
 {
     // Default margins (mm)
-    protected float $marginLeft   = 15;
+    protected float $marginLeft   = 15; 
     protected float $marginRight  = 15;
     protected float $marginTop    = 0;
     protected float $marginBottom = 0;
@@ -145,7 +145,7 @@ $this->addText(
         $this->addText(
             $pdf,
             141,
-            272.5,
+            273.5,
             $record->certificate_number,
             8,
             '',
@@ -165,7 +165,7 @@ $this->addText(
         $this->addText(
             $pdf,
             126,
-            278.2,
+            279,
             Carbon::parse($record->issue_date)->format('d F Y'),
             8,
             '',
